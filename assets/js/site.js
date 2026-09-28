@@ -65,6 +65,10 @@
     var page = form.querySelector("input[name=page]");
     if (page) page.value = window.location.href;
     var error = form.querySelector(".form-error");
+    if (/[?&]error=1/.test(window.location.search)) {
+      var sendErr = form.querySelector(".form-error--send");
+      if (sendErr) sendErr.classList.add("is-visible");
+    }
     form.addEventListener("submit", function (e) {
       if (!form.checkValidity()) {
         e.preventDefault();

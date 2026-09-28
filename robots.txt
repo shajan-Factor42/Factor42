@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /thank-you
 Disallow: /_build/
+Disallow: /_worker/
 
 Sitemap: https://factor42media.com/sitemap.xml

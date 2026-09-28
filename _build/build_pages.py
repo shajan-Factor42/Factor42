@@ -10,6 +10,8 @@ import json, sys, pathlib
 OUT = pathlib.Path(sys.argv[1])
 BASE = "https://factor42media.com"
 WEB3FORMS_KEY = "afa90fc4-141b-45da-a8cb-7c4adcd1951d"
+# Set to the Cloudflare Worker URL (see _worker/README.md) to send the form through Resend instead of Web3Forms
+FORM_ENDPOINT = ""
 LINKEDIN = "https://www.linkedin.com/company/factor42media/"
 
 ORG = {
@@ -220,6 +222,21 @@ FAQ = [
 ]
 faq_html = "\n".join(f'<div class="row"><h3>{q}</h3><p>{a}</p></div>' for q, a in FAQ)
 
+def contact_body():
+    b = body("contact")
+    if not FORM_ENDPOINT:
+        return b.replace("{{KEY}}", WEB3FORMS_KEY)
+    b = b.replace('action="https://api.web3forms.com/submit"', f'action="{FORM_ENDPOINT}"')
+    drop = ['<input type="hidden" name="access_key" value="{{KEY}}">\n',
+            '<input type="hidden" name="subject" value="New consultation request — factor42media.com">\n',
+            '<input type="hidden" name="from_name" value="Factor42 website">\n',
+            '<input type="hidden" name="redirect" value="https://factor42media.com/thank-you">\n']
+    for d in drop:
+        assert d in b, d
+        b = b.replace(d, "")
+    return b
+
+
 page("index",
      "White-Label Ad Operations & Campaign Fulfillment | Factor42 Media",
      "White-label ad ops for agencies and media companies. We traffic, optimize and report on campaigns across every channel, under your brand.",
@@ -249,7 +266,7 @@ page("about",
 page("contact",
      "Book a Free Consultation | Factor42 Media",
      "Tell us what you sell and where. Factor42 will follow up with a fulfillment plan and a wholesale rate card built around your volume.",
-     "contact", "contact", body("contact").replace("{{KEY}}", WEB3FORMS_KEY),
+     "contact", "contact", contact_body(),
      graph=[ORG, {"@type": "ContactPage", "url": f"{BASE}/contact", "name": "Book a consultation with Factor42 Media", "about": {"@id": f"{BASE}/#org"}}])
 
 page("thank-you", "Thanks — we've got it | Factor42 Media", "Your consultation request has been received.",
