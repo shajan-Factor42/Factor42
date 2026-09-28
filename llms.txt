@@ -1,0 +1,15 @@
+# Factor42 Media
+
+> Factor42 Media is a white-label ad operations and campaign fulfillment company. Agencies and broadcast/media groups sell digital campaigns to their clients; Factor42 traffics, QAs, optimizes and reports on those campaigns under the partner's brand.
+
+- Channels: Google Ads (Search, Display, Performance Max, Shopping), YouTube, Meta, TikTok, LinkedIn, Reddit, X, Pinterest, Snapchat, programmatic (DV360, The Trade Desk, Xandr, Amazon DSP), OTT/CTV, programmatic audio, DOOH, email marketing.
+- Results: 98.6% campaign delivery rate; 100+ agency and media partners; 12-minute average trafficking turnaround; Google Ads launches in under 4 hours on average.
+- Who it serves: marketing agencies (white-label PPC, paid social and full ad ops) and TV/radio broadcast groups (digital fulfillment for station sellers, market-level reporting).
+
+## Pages
+
+- [Home](https://factor42media.com/): overview, services, process, channels
+- [For agencies](https://factor42media.com/agencies): white-label ad ops, PPC and paid social, economics, FAQ
+- [For broadcasters](https://factor42media.com/broadcasters): digital menu for station sellers, order-to-delivery workflow, reporting, switchover
+- [About](https://factor42media.com/about): company and working principles
+- [Book a consultation](https://factor42media.com/contact)
