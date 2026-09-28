@@ -43,6 +43,20 @@
     select(tabs[0], false);
   }
 
+  // Blog topic filter
+  var filterBar = document.querySelector(".filters");
+  if (filterBar) {
+    filterBar.hidden = false;
+    var cards = document.querySelectorAll(".post-card");
+    filterBar.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-filter]");
+      if (!btn) return;
+      var f = btn.getAttribute("data-filter");
+      filterBar.querySelectorAll("[data-filter]").forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+      cards.forEach(function (c) { c.classList.toggle("is-hidden", f !== "all" && c.getAttribute("data-cat") !== f); });
+    });
+  }
+
   // Consultation form: send visitors to this site's thank-you page, wherever it is hosted
   var form = document.querySelector("form[data-consult]");
   if (form) {

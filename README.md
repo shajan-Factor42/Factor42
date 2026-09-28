@@ -13,6 +13,8 @@ The Factor42 Media website: plain static HTML and CSS, served by GitHub Pages. N
 | Book a consultation | `contact.html` | `/contact` |
 | Thank-you (after the form) | `thank-you.html` | `/thank-you` (not indexed) |
 | Not found | `404.html` | any missing URL |
+| Blog index | `blog/index.html` | `/blog/` |
+| 105 blog articles | `blog/<slug>.html` | `/blog/<slug>` |
 | Old-URL redirects | `consultation.html`, `white-label-ppc.html` | `/consultation` → `/contact`, `/white-label-ppc` → `/agencies#ppc` |
 
 - `assets/css/site.css`: all styles (colours, type, layout, phone layouts)
@@ -45,7 +47,7 @@ These pages exist on the current site but aren't in this repo yet. The footer an
 
 - [ ] `/privacy-policy`, `/terms-of-service`, `/sla` and `/security`. The form links to the privacy policy, so this one is required.
 - [ ] `/careers`
-- [ ] `/blog` and its posts, plus `/library`
+- [ ] `/library`
 
 Add each as an `.html` file in the repo root with the same name (e.g. `privacy-policy.html`), or tell Claude to build them.
 
@@ -64,3 +66,9 @@ Add each as an `.html` file in the repo root with the same name (e.g. `privacy-p
 - Google Search Console and Bing Webmaster Tools: submit `https://factor42media.com/sitemap.xml`
 - Add your analytics snippet (GA4, Plausible or similar) to each page's `<head>`
 - Test the form once more on the live domain
+
+## The blog
+
+The 105 articles come from the Word documents in Google Drive (**Factor 42 Blog Content** and its **Blogs 7/16** subfolder). Each has its own page with headings, reading time, topic, article structured data and related reading, and all are listed in `sitemap.xml`. The blog index at `/blog/` can be filtered by topic: Channels & platforms, Strategy & budget, Choosing a partner, and Seasonal & timing.
+
+To add or change articles, ask Claude to rebuild the blog from the Drive folder.

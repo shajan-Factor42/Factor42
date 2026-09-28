@@ -13,3 +13,4 @@
 - [For broadcasters](https://factor42media.com/broadcasters): digital menu for station sellers, order-to-delivery workflow, reporting, switchover
 - [About](https://factor42media.com/about): company and working principles
 - [Book a consultation](https://factor42media.com/contact)
+- [Blog](https://factor42media.com/blog/): 105 guides on advertising channels (CTV, streaming audio, DOOH, search, social, email, programmatic), budgeting and strategy, choosing a marketing partner, and seasonal planning
