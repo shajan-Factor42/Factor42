@@ -340,8 +340,9 @@ def categorize(slug, title):
 def parse_article(path):
     text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
     lines = text.split("\n")
-    fid = lines[0].split(":", 1)[1].strip() if lines[0].startswith("ID:") else ""
-    blocks = [b.strip() for b in re.split(r"\n\s*\n|\n", "\n".join(lines[1:])) if b.strip()]
+    has_id = lines[0].startswith("ID:")
+    fid = lines[0].split(":", 1)[1].strip() if has_id else ""
+    blocks = [b.strip() for b in re.split(r"\n\s*\n|\n", "\n".join(lines[1:] if has_id else lines)) if b.strip()]
     label, title = unescape_md(blocks[0]), unescape_md(blocks[1])
     body = blocks[2:]
     out, i, first_para = [], 0, None
