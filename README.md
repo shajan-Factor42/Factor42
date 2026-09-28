@@ -15,7 +15,8 @@ The Factor42 Media website: plain static HTML and CSS, served by GitHub Pages. N
 | Not found | `404.html` | any missing URL |
 | Blog index | `blog/index.html` | `/blog/` |
 | 105 blog articles | `blog/<slug>.html` | `/blog/<slug>` |
-| Old-URL redirects | `consultation.html`, `white-label-ppc.html` | `/consultation` → `/contact`, `/white-label-ppc` → `/agencies#ppc` |
+| Privacy, terms, SLA, security, careers | `privacy-policy.html`, `terms-of-service.html`, `sla.html`, `security.html`, `careers.html` | same names, no extension |
+| Old-URL redirects | `consultation.html`, `white-label-ppc.html`, `library.html` | `/consultation` → `/contact`, `/white-label-ppc` → `/agencies#ppc`, `/library` → `/blog/` |
 
 - `assets/css/site.css`: all styles (colours, type, layout, phone layouts)
 - `assets/js/site.js`: mobile menu, the channel tabs on the homepage, form redirect. The site works without it.
@@ -41,15 +42,9 @@ The form posts to Web3Forms using the same access key as deepthought.marketing, 
 1. Submit a test on `/contact` and confirm it arrives and you land on the thank-you page.
 2. If it's rejected, open the Web3Forms dashboard and add `factor42media.com` and `shajan-factor42.github.io` to the key's allowed domains, if that setting is on.
 
-## Step 3: Before switching the domain
+## Step 3: Company and legal pages
 
-These pages exist on the current site but aren't in this repo yet. The footer and nav link to them, so they'd 404 after the switch:
-
-- [ ] `/privacy-policy`, `/terms-of-service`, `/sla` and `/security`. The form links to the privacy policy, so this one is required.
-- [ ] `/careers`
-- [ ] `/library`
-
-Add each as an `.html` file in the repo root with the same name (e.g. `privacy-policy.html`), or tell Claude to build them.
+`privacy-policy`, `terms-of-service`, `sla`, `security` and `careers` are built, and `/library` redirects to the blog. The privacy policy and terms were written for how this site actually works (consultation form via Web3Forms, no analytics or tracking cookies). Have them reviewed before relying on them, and update the privacy policy if you add analytics or ad pixels.
 
 ## Step 4: Point factor42media.com here
 
@@ -71,4 +66,4 @@ Add each as an `.html` file in the repo root with the same name (e.g. `privacy-p
 
 The 105 articles come from the Word documents in Google Drive (**Factor 42 Blog Content** and its **Blogs 7/16** subfolder). Each has its own page with headings, reading time, topic, article structured data and related reading, and all are listed in `sitemap.xml`. The blog index at `/blog/` can be filtered by topic: Channels & platforms, Strategy & budget, Choosing a partner, and Seasonal & timing.
 
-To add or change articles, ask Claude to rebuild the blog from the Drive folder.
+To add or change articles, ask Claude to rebuild the blog from the Drive folder. The build scripts and source text are in `_build/`.
