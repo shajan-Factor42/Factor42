@@ -12,6 +12,12 @@
 - [Home](https://factor42media.com/): Overview, services, process and every channel Factor42 runs
 - [For agencies](https://factor42media.com/agencies): White-label ad ops, PPC and paid social for agencies; economics and FAQ
 - [For broadcasters](https://factor42media.com/broadcasters): Digital menu for TV and radio sellers, order-to-delivery workflow, market reporting, switchover
+- [White-label digital marketing services](https://factor42media.com/white-label-digital-marketing): White-label digital marketing for agencies and media companies: search, social, programmatic, streaming TV, DOOH and email, run under your brand.
+- [White-label PPC](https://factor42media.com/white-label-ppc): White-label PPC management for agencies: Google Ads, YouTube, Meta, TikTok and LinkedIn campaigns built, optimized and reported under your brand.
+- [White-label Google Ads](https://factor42media.com/white-label-google-ads): White-label Google Ads management: Search, Performance Max, Shopping, Display and YouTube campaigns built and optimized under your agency's brand.
+- [White-label Facebook & Instagram ads](https://factor42media.com/white-label-facebook-ads): White-label Facebook and Instagram ads management for agencies: Meta campaigns plus TikTok, LinkedIn and Reddit, built and reported under your brand.
+- [White-label programmatic, CTV & DOOH](https://factor42media.com/white-label-programmatic): White-label programmatic for agencies and broadcasters: display, video, audio, streaming TV (CTV/OTT) and DOOH across DV360, The Trade Desk and more.
+- [Outsourced ad operations & trafficking](https://factor42media.com/outsourced-ad-operations): Outsourced ad operations for agencies and media companies: ad trafficking, creative QA, pacing, billing reconciliation and reporting across every platform.
 - [About](https://factor42media.com/about): Company and working principles
 - [Service level agreements](https://factor42media.com/sla): What Factor42 SLAs cover: turnaround, QA, pacing, reporting, escalation
 - [Security & confidentiality](https://factor42media.com/security): Account access, confidentiality and data handling

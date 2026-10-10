@@ -173,8 +173,12 @@ def footer(pre=""):
 <h2>Services</h2>
 <a href="{p}agencies">For agencies</a>
 <a href="{p}broadcasters">For broadcasters</a>
-<a href="{p}agencies#ppc">White-label PPC &amp; paid social</a>
-<a href="{home}#solutions">All channels</a>
+<a href="{p}white-label-digital-marketing">White-label digital marketing</a>
+<a href="{p}white-label-ppc">White-label PPC</a>
+<a href="{p}white-label-google-ads">White-label Google Ads</a>
+<a href="{p}white-label-facebook-ads">White-label Facebook ads</a>
+<a href="{p}white-label-programmatic">Programmatic, CTV &amp; DOOH</a>
+<a href="{p}outsourced-ad-operations">Outsourced ad operations</a>
 </div>
 <div class="footer-col">
 <h2>Company</h2>
@@ -336,9 +340,161 @@ legal("security", "Security &amp; confidentiality", "Security & Confidentiality 
 page("careers", "Careers at Factor42 Media | Ad Ops Jobs", "Join the ad ops team behind agencies and media groups. Factor42 hires ad ops specialists, campaign managers and analysts.",
      "careers", "", body("careers"), graph=[ORG])
 
+# ---- service landing pages (content in services.py); blog cards are filled in after the blog build
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from services import SERVICES, PROCESS, PROOF, HUB
+SVC_BY_SLUG = {s["slug"]: s for s in SERVICES}
+SVC_BLURB = {s["slug"]: s["lede"].split(". ")[0].rstrip(".") + "." for s in SERVICES}
+
+
+def service_body(s):
+    others = [x for x in SERVICES if x["slug"] not in (s["slug"], HUB)]
+    if s["includes"] == "SERVICE_CARDS":
+        inc = "".join(f'<a class="item item-link" href="{x["slug"]}"><span class="num">{i + 1:02d}</span><h3 class="card-title">{x["nav"]}</h3>'
+                      f'<p>{SVC_BLURB[x["slug"]]}</p><span class="link-accent">See the service →</span></a>' for i, x in enumerate(others))
+    else:
+        inc = "".join(f'<div class="item"><span class="num">{i + 1:02d}</span><h3 class="card-title">{t}</h3><p>{d}</p></div>'
+                      for i, (t, d) in enumerate(s["includes"]))
+    glance = (["Your logo on every report", "Wholesale pricing, your margin", "Your ad accounts, your data", "Team-to-team support"])
+    what = "".join(f"<p>{p}</p>" for p in s["what"])
+    why = "".join(f'<div class="row"><h3>{t}</h3><p>{d}</p></div>' for t, d in s["why"])
+    steps = "".join(f'<div class="item"><span class="num">{i + 1:02d}</span><h3 class="card-title">{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(PROCESS))
+    faq = "".join(f'<div class="row"><h3>{q}</h3><p>{a}</p></div>' for q, a in s["faq"])
+    plats = "".join(f"<li>{p}</li>" for p in s["platforms"])
+    stats = "".join(f'<div class="stat"><b>{n}</b><span>{l}</span></div>' for n, l in PROOF)
+    if s["slug"] == HUB:
+        rel = [("For agencies", "agencies", "How the white-label model works for marketing agencies, plus PPC and paid social."),
+               ("For broadcasters", "broadcasters", "A full digital menu for TV and radio sellers, reported by market."),
+               ("Outsourced ad operations", "outsourced-ad-operations", "Trafficking, QA, pacing and reporting as a service.")]
+    else:
+        rel = [("All white-label services", HUB, "Every channel Factor42 fulfills for agencies and media companies.")]
+        rel += [(x["nav"], x["slug"], SVC_BLURB[x["slug"]]) for x in others if x["slug"] != s["slug"]][:3]
+    related = "".join(f'<a class="item item-link" href="{u}"><h3 class="card-title">{n}</h3><p>{d}</p><span class="link-accent">Learn more →</span></a>' for n, u, d in rel)
+    return f"""<nav class="wrap breadcrumbs crumbs-top" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><a href="agencies">For agencies</a><span aria-hidden="true">/</span><span>{s["nav"] if s["slug"] != HUB else "White-label digital marketing"}</span></nav>
+<div class="wrap hero hero--wide">
+<div class="hero-copy">
+<p class="eyebrow">{s["eyebrow"]}</p>
+<h1 class="display">{s["h1"]}</h1>
+<p class="lede">{s["lede"]}</p>
+<div class="actions mt-8">
+<a class="btn btn-accent" href="contact">Get a wholesale rate card <span aria-hidden="true">→</span></a>
+<a class="link-underline" href="#faq">Read the FAQ</a>
+</div>
+</div>
+<div class="panel-ink on-ink">
+<p class="eyebrow">White-label means</p>
+<ul class="bullets">{"".join(f"<li>{g}</li>" for g in glance)}</ul>
+</div>
+</div>
+
+<div class="wrap">
+<div class="stats" aria-label="Results">{stats}</div>
+<div class="platforms">
+<p class="eyebrow">Platforms</p>
+<ul aria-label="Platforms we run">{plats}</ul>
+</div>
+</div>
+
+<section class="section section-white" aria-labelledby="what-title">
+<div class="wrap two-col two-col--side">
+<div class="stack">
+<p class="eyebrow">The model</p>
+<h2 class="section-title" id="what-title">{s["what_title"]}</h2>
+</div>
+<div class="prose prose--flush">{what}</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="inc-title">
+<div class="wrap">
+<div class="section-head">
+<div class="stack">
+<p class="eyebrow">{"Services" if s["slug"] == HUB else "Scope"}</p>
+<h2 class="section-title" id="inc-title">{s["includes_title"]}</h2>
+</div>
+<p class="lede">Your team keeps the strategy and the client. We handle the execution.</p>
+</div>
+<div class="grid grid-3">{inc}</div>
+</div>
+</section>
+
+<section class="section section-white" aria-labelledby="why-title">
+<div class="wrap two-col two-col--side">
+<div class="stack">
+<p class="eyebrow">Why Factor42</p>
+<h2 class="section-title" id="why-title">{s["why_title"]}</h2>
+<a class="link-accent" href="agencies">How white-label works for agencies →</a>
+</div>
+<div class="rows">{why}</div>
+</div>
+</section>
+
+<section class="section section-ink on-ink" aria-labelledby="how-title">
+<div class="wrap">
+<div class="section-head">
+<div class="stack">
+<p class="eyebrow">How it works</p>
+<h2 class="section-title" id="how-title">From brief to branded report.</h2>
+</div>
+<p class="lede">The same four steps for every channel, so your team learns one workflow.</p>
+</div>
+<div class="grid grid-4">{steps}</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="econ-title">
+<div class="wrap">
+<div class="section-head section-head--narrow">
+<div class="stack">
+<p class="eyebrow">The economics</p>
+<h2 class="section-title" id="econ-title">You set the price. You keep the margin.</h2>
+<p class="lede">We charge a wholesale fulfillment rate, priced by channel and volume. What you charge your client is up to you.</p>
+</div>
+</div>
+<div class="econ">
+<div><span class="label">Your client pays you</span><b>Your retail rate</b><span>Your management fee or CPM, set by you</span></div>
+<div><span class="label">You pay Factor42</span><b>Our wholesale rate</b><span>Fulfillment, priced by channel and volume</span></div>
+<div class="econ-ink"><span class="label">Your margin</span><b>The difference</b><span>Without adding headcount</span></div>
+</div>
+</div>
+</section>
+
+<section class="section section-white" id="faq" aria-labelledby="faq-title">
+<div class="wrap two-col two-col--side">
+<div class="stack">
+<p class="eyebrow">FAQ</p>
+<h2 class="section-title" id="faq-title">Common questions</h2>
+</div>
+<div class="rows">{faq}</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="rel-title">
+<div class="wrap">
+<div class="related-head"><h2 class="section-title" id="rel-title">{"Who we work with" if s["slug"] == HUB else "Related services"}</h2><a class="link-accent" href="{"agencies" if s["slug"] == HUB else HUB}">{"For agencies →" if s["slug"] == HUB else "All services →"}</a></div>
+<div class="grid grid-4 grid-links">{related}</div>
+</div>
+</section>
+
+<!--FROM_BLOG:{",".join(s["blog"])}-->
+"""
+
+
+for s in SERVICES:
+    url = f"{BASE}/{s['slug']}"
+    trail = [("For agencies", "agencies"), ("White-label digital marketing" if s["slug"] == HUB else s["nav"], s["slug"])]
+    graph = [ORG,
+             {"@type": "Service", "@id": f"{url}#service", "name": s["eyebrow"], "serviceType": s["service_type"], "description": s["desc"],
+              "url": url, "provider": {"@id": f"{BASE}/#org"}, "areaServed": {"@type": "Country", "name": "United States"},
+              "audience": {"@type": "BusinessAudience", "name": "Marketing agencies and media companies"},
+              **({"hasOfferCatalog": OFFER_CATALOG} if s["slug"] == HUB else {})},
+             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]},
+             crumbs(*trail)]
+    page(s["slug"], s["title"], s["desc"], s["slug"], "agencies", service_body(s) + cta("Add a channel to your agency this month.",
+         "Tell us what you sell. We'll send a fulfillment plan and a wholesale rate card."), graph=graph)
+
 # Old URLs from the previous site
 redirect_page("consultation", "contact", "Book a consultation | Factor42 Media")
-redirect_page("white-label-ppc", "agencies#ppc", "White-label PPC | Factor42 Media")
 redirect_page("library", "blog/", "Library | Factor42 Media")
 
 print("built:", sorted(p.name for p in OUT.glob("*.html")))
@@ -570,7 +726,7 @@ for pst in posts:
     (BLOG_DIR / f"{pst['slug']}.html").write_text(page_html, encoding="utf-8")
 
 # ---- "From the blog" sections on service pages (placeholders in bodies/*.html)
-for _f in ("index.html", "agencies.html", "broadcasters.html"):
+for _f in ["index.html", "agencies.html", "broadcasters.html"] + [f"{x['slug']}.html" for x in SERVICES]:
     _path = OUT / _f; _src = _path.read_text(encoding="utf-8")
     def _fb(m):
         picks = [pst_by_slug[x] for x in m.group(1).split(",")]
@@ -609,6 +765,7 @@ ABOUT_LLM = ("> Factor42 Media is a white-label ad operations and campaign fulfi
 CORE = [("Home", "", "Overview, services, process and every channel Factor42 runs"),
         ("For agencies", "agencies", "White-label ad ops, PPC and paid social for agencies; economics and FAQ"),
         ("For broadcasters", "broadcasters", "Digital menu for TV and radio sellers, order-to-delivery workflow, market reporting, switchover"),
+] + [(x["eyebrow"], x["slug"], x["desc"]) for x in SERVICES] + [
         ("About", "about", "Company and working principles"),
         ("Service level agreements", "sla", "What Factor42 SLAs cover: turnaround, QA, pacing, reporting, escalation"),
         ("Security & confidentiality", "security", "Account access, confidentiality and data handling"),
@@ -630,7 +787,7 @@ for cid, cname in CAT_ORDER:
 (OUT / "llms-full.txt").write_text("\n".join(full) + "\n", encoding="utf-8")
 
 # ---- sitemap
-core = [("", 1.0), ("agencies", 0.9), ("broadcasters", 0.9), ("about", 0.6), ("contact", 0.7), ("blog/", 0.7), ("careers", 0.4), ("sla", 0.4), ("security", 0.4), ("privacy-policy", 0.2), ("terms-of-service", 0.2)]
+core = [("", 1.0), ("agencies", 0.9), ("broadcasters", 0.9)] + [(x["slug"], 0.8) for x in SERVICES] + [("about", 0.6), ("contact", 0.7), ("blog/", 0.7), ("careers", 0.4), ("sla", 0.4), ("security", 0.4), ("privacy-policy", 0.2), ("terms-of-service", 0.2)]
 import subprocess, datetime
 
 
@@ -685,9 +842,9 @@ OLD_BLOG = {
     "google-ads-vs-programmatic": "blog/programmatic-without-the-agency-markup",
     "dsp-consolidation": "blog/what-consolidated-media-buying-is",
     "vetting-ad-ops-partner": "blog/7-questions-to-vet-a-provider",
-    "paid-social-launch-checklist": "agencies#ppc",
-    "white-label-trafficking-retention": "agencies",
-    "trafficking-mistakes-retainers": "agencies",
+    "paid-social-launch-checklist": "white-label-facebook-ads",
+    "white-label-trafficking-retention": "outsourced-ad-operations",
+    "trafficking-mistakes-retainers": "outsourced-ad-operations",
 }
 
 
