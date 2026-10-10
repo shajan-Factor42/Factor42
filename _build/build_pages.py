@@ -124,7 +124,15 @@ def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website"
 """
 
 
-NAV = [("agencies", "Agencies"), ("broadcasters", "Broadcasters"), ("./#solutions", "Solutions"), ("about", "About"), ("blog/", "Blog")]
+NAV = [("agencies", "Agencies"), ("broadcasters", "Broadcasters"), ("SOLUTIONS", "Solutions"), ("about", "About"), ("blog/", "Blog")]
+# "Solutions" dropdown: the service pages (kept in sync with services.py)
+SOLUTIONS = [("white-label-ppc", "White-label PPC", "Search and paid social, under your brand"),
+             ("white-label-google-ads", "White-label Google Ads", "Search, Performance Max, Shopping, YouTube"),
+             ("white-label-facebook-ads", "White-label Facebook ads", "Meta, Instagram, TikTok, LinkedIn, Reddit"),
+             ("white-label-programmatic", "Programmatic, CTV &amp; DOOH", "Display, video, audio, streaming TV, billboards"),
+             ("outsourced-ad-operations", "Outsourced ad operations", "Trafficking, QA, pacing and reporting"),
+             ("white-label-digital-marketing", "All white-label services", "Every channel, one partner")]
+SOLUTION_SLUGS = {u for u, _, _ in SOLUTIONS}
 
 
 def header(active="", pre=""):
@@ -134,8 +142,26 @@ def header(active="", pre=""):
         h = (pre or "./") + href[2:] if href.startswith("./") else pre + href
         cur = ' aria-current="page"' if href == active else ""
         return f'<li><a href="{h}"{cur}>{label}</a></li>'
-    items = "\n".join(link(h, l) for h, l in NAV)
-    mitems = "\n".join(link(h, l).replace("<li>", "").replace("</li>", "") for h, l in NAV)
+    sol_on = active in SOLUTION_SLUGS
+    def sol_link(u, n, d, mobile=False):
+        cur = ' aria-current="page"' if u == active else ""
+        if mobile:
+            return f'<a class="mnav-sub" href="{p}{u}"{cur}>{n}</a>'
+        return f'<li><a href="{p}{u}"{cur}><span class="dd-name">{n}</span><span class="dd-desc">{d}</span></a></li>'
+    def desk(h, l):
+        if h != "SOLUTIONS":
+            return link(h, l)
+        cls = " is-active" if sol_on else ""
+        return (f'<li class="has-dd"><button class="dd-toggle{cls}" type="button" aria-expanded="false" aria-controls="dd-solutions">{l}'
+                '<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>'
+                f'<div class="dd" id="dd-solutions"><ul>{"".join(sol_link(*x) for x in SOLUTIONS)}</ul>'
+                f'<a class="dd-foot" href="{home}#solutions">See every channel we run →</a></div></li>')
+    def mob(h, l):
+        if h != "SOLUTIONS":
+            return link(h, l).replace("<li>", "").replace("</li>", "")
+        return f'<span class="mnav-head">{l}</span>' + "".join(sol_link(*x, mobile=True) for x in SOLUTIONS)
+    items = "\n".join(desk(h, l) for h, l in NAV)
+    mitems = "\n".join(mob(h, l) for h, l in NAV)
     contact_cur = ' aria-current="page"' if active == "contact" else ""
     return f"""<header class="site-header">
 <div class="wrap header-inner">
@@ -490,7 +516,7 @@ for s in SERVICES:
               **({"hasOfferCatalog": OFFER_CATALOG} if s["slug"] == HUB else {})},
              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]},
              crumbs(*trail)]
-    page(s["slug"], s["title"], s["desc"], s["slug"], "agencies", service_body(s) + cta("Add a channel to your agency this month.",
+    page(s["slug"], s["title"], s["desc"], s["slug"], s["slug"], service_body(s) + cta("Add a channel to your agency this month.",
          "Tell us what you sell. We'll send a fulfillment plan and a wholesale rate card."), graph=graph)
 
 # Old URLs from the previous site

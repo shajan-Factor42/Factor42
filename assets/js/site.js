@@ -15,6 +15,19 @@
     });
   }
 
+  // Solutions dropdown: click/Enter toggles, Escape and outside click close (hover and focus open it via CSS)
+  var dd = document.querySelector(".has-dd");
+  if (dd) {
+    var ddBtn = dd.querySelector(".dd-toggle");
+    var setDd = function (open) { dd.classList.toggle("is-open", open); ddBtn.setAttribute("aria-expanded", open ? "true" : "false"); };
+    ddBtn.addEventListener("click", function () { setDd(!dd.classList.contains("is-open")); });
+    dd.addEventListener("mouseenter", function () { ddBtn.setAttribute("aria-expanded", "true"); });
+    dd.addEventListener("mouseleave", function () { if (!dd.classList.contains("is-open")) ddBtn.setAttribute("aria-expanded", "false"); });
+    document.addEventListener("click", function (e) { if (!dd.contains(e.target)) setDd(false); });
+    dd.addEventListener("keydown", function (e) { if (e.key === "Escape") { setDd(false); ddBtn.focus(); } });
+    dd.addEventListener("focusout", function (e) { if (!dd.contains(e.relatedTarget)) setDd(false); });
+  }
+
   // Channel tabs (homepage)
   var tablist = document.querySelector("[role=tablist]");
   if (tablist) {
