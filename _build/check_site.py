@@ -30,7 +30,7 @@ srv = http.server.ThreadingHTTPServer(("127.0.0.1", 8765), H)
 threading.Thread(target=srv.serve_forever, daemon=True).start()
 BASE = f"http://127.0.0.1:8765{PREFIX}/"
 
-pages = ["privacy-policy", "terms-of-service", "sla", "security", "careers", "library", "", "agencies", "broadcasters", "about", "contact", "thank-you", "blog/", "blog/is-seo-dead", "blog/what-to-demand-from-anyone-who-runs-your-ads", "blog/why-ctv-belongs-in-your-mix"]
+pages = ["privacy-policy", "terms-of-service", "sla", "security", "careers", "", "agencies", "broadcasters", "about", "contact", "thank-you", "blog/", "blog/is-seo-dead", "blog/what-to-demand-from-anyone-who-runs-your-ads", "blog/why-ctv-belongs-in-your-mix"]
 problems, links = [], set()
 with sync_playwright() as p:
     b = p.chromium.launch()
