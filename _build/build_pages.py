@@ -14,16 +14,55 @@ WEB3FORMS_KEY = "afa90fc4-141b-45da-a8cb-7c4adcd1951d"
 FORM_ENDPOINT = ""
 LINKEDIN = "https://www.linkedin.com/company/factor42media/"
 
+CHANNELS = [
+    ("Search advertising (Google Ads)", "Search, Display, Performance Max and Shopping campaign setup, bidding and optimization"),
+    ("YouTube advertising", "In-stream, bumper, non-skippable and Masthead video campaigns"),
+    ("Digital out-of-home (DOOH)", "Programmatic billboard, transit, retail and venue screen campaigns"),
+    ("Streaming TV (OTT / CTV)", "Connected TV campaigns on Roku, Hulu, Peacock, Amazon Fire TV and more"),
+    ("Programmatic display, video and audio", "Campaigns across DV360, The Trade Desk, Xandr and Amazon DSP"),
+    ("Paid social", "Meta, TikTok, LinkedIn and Reddit campaigns"),
+    ("Email marketing", "Campaign builds, lifecycle automation and deliverability management"),
+]
+OFFER_CATALOG = {
+    "@type": "OfferCatalog", "name": "White-label ad operations by channel",
+    "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "description": d}} for n, d in CHANNELS],
+}
 ORG = {
     "@type": "Organization",
     "@id": f"{BASE}/#org",
     "name": "Factor42 Media",
     "legalName": "Factor42 Media Inc.",
+    "alternateName": "Factor42",
     "url": f"{BASE}/",
-    "logo": f"{BASE}/assets/img/logo-512.png",
-    "description": "White-label ad operations and campaign fulfillment for agencies and media companies.",
+    "logo": {"@type": "ImageObject", "url": f"{BASE}/assets/img/logo-512.png", "width": 512, "height": 512},
+    "image": f"{BASE}/assets/img/og-image.png",
+    "slogan": "The ad ops team behind your brand.",
+    "description": ("Factor42 Media is a white-label ad operations and campaign fulfillment company. Agencies and TV and radio "
+                    "broadcast groups sell digital campaigns; Factor42 traffics, optimizes and reports on them under the partner's brand "
+                    "across search, social, programmatic, streaming TV, audio, DOOH and email."),
+    "address": {"@type": "PostalAddress", "streetAddress": "8 The Green, Ste E", "addressLocality": "Dover",
+                "addressRegion": "DE", "postalCode": "19901", "addressCountry": "US"},
+    "areaServed": {"@type": "Country", "name": "United States"},
+    "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "url": f"{BASE}/contact", "availableLanguage": "English"},
+    "knowsAbout": ["White-label ad operations", "Campaign fulfillment", "Ad trafficking", "Programmatic advertising",
+                   "Connected TV advertising", "Paid search", "Paid social", "Digital out-of-home advertising",
+                   "Email marketing", "Campaign reporting", "Media buying"],
     "sameAs": [LINKEDIN],
 }
+WEBSITE = {"@type": "WebSite", "@id": f"{BASE}/#website", "url": f"{BASE}/", "name": "Factor42 Media",
+           "publisher": {"@id": f"{BASE}/#org"}, "inLanguage": "en-US"}
+
+
+def crumbs(*pairs):
+    """BreadcrumbList from (name, path) pairs, starting at Home."""
+    items = [("Home", "")] + list(pairs)
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": f"{BASE}/{pth}"} for i, (n, pth) in enumerate(items)]}
+
+
+CRUMB_NAMES = {"agencies": "For agencies", "broadcasters": "For broadcasters", "about": "About", "contact": "Book a consultation",
+               "privacy-policy": "Privacy policy", "terms-of-service": "Terms of service", "sla": "Service level agreements",
+               "security": "Security & confidentiality", "careers": "Careers"}
 
 
 def mark(on_ink=False, cls="brand-mark", size=None):
@@ -188,6 +227,10 @@ def cta(title, text=None, button="Book a free consultation", with_mark=False, pr
 
 
 def page(name, title, desc, path, active, body, graph=None, noindex=False):
+    if graph is not None:
+        graph = list(graph) + [WEBSITE]
+        if path in CRUMB_NAMES:
+            graph.append(crumbs((CRUMB_NAMES[path], path)))
     html = head(title, desc, path, graph, noindex) + header(active) + '<main id="main">\n' + body + "</main>\n" + footer()
     (OUT / f"{name}.html").write_text(html, encoding="utf-8")
 
@@ -243,21 +286,21 @@ page("index",
      "White-Label Ad Operations & Campaign Fulfillment | Factor42 Media",
      "White-label ad ops for agencies and media companies. We traffic, optimize and report on campaigns across every channel, under your brand.",
      "", "", body("home") + cta("Ready to scale your ad operations?", "Join 100+ media companies and agencies who trust Factor42 to execute their campaigns with speed and precision.", with_mark=True),
-     graph=[ORG, {"@type": "WebSite", "@id": f"{BASE}/#website", "url": f"{BASE}/", "name": "Factor42 Media", "publisher": {"@id": f"{BASE}/#org"}}])
+     graph=[dict(ORG, hasOfferCatalog=OFFER_CATALOG)])
 
 page("agencies",
      "White-Label Ad Ops & PPC for Agencies | Factor42 Media",
      "Add search, social, programmatic, CTV and DOOH without adding headcount. Factor42 runs your campaigns and reporting under your agency's brand.",
      "agencies", "agencies", body("agencies").replace("{{FAQ}}", faq_html) + cta("Add a channel to your agency this month."),
      graph=[ORG,
-            {"@type": "Service", "name": "White-label ad operations for agencies", "serviceType": "White-label ad operations and campaign fulfillment", "provider": {"@id": f"{BASE}/#org"}, "url": f"{BASE}/agencies", "audience": {"@type": "BusinessAudience", "name": "Marketing and advertising agencies"}},
+            {"@type": "Service", "name": "White-label ad operations for agencies", "serviceType": "White-label ad operations and campaign fulfillment", "provider": {"@id": f"{BASE}/#org"}, "url": f"{BASE}/agencies", "areaServed": {"@type": "Country", "name": "United States"}, "audience": {"@type": "BusinessAudience", "name": "Marketing and advertising agencies"}, "hasOfferCatalog": OFFER_CATALOG},
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}])
 
 page("broadcasters",
      "Digital Ad Fulfillment for TV & Radio Groups | Factor42 Media",
      "Give every seller in every market a full digital menu. Factor42 builds, launches and reports on digital campaigns for broadcast groups, under your brand.",
      "broadcasters", "broadcasters", body("broadcasters") + cta("Put a full digital menu in every seller's hands.", button="Talk to our broadcast team"),
-     graph=[ORG, {"@type": "Service", "name": "Digital ad fulfillment for broadcast and media groups", "serviceType": "White-label digital advertising fulfillment", "provider": {"@id": f"{BASE}/#org"}, "url": f"{BASE}/broadcasters", "audience": {"@type": "BusinessAudience", "name": "TV and radio broadcast groups"}}])
+     graph=[ORG, {"@type": "Service", "name": "Digital ad fulfillment for broadcast and media groups", "serviceType": "White-label digital advertising fulfillment", "provider": {"@id": f"{BASE}/#org"}, "url": f"{BASE}/broadcasters", "areaServed": {"@type": "Country", "name": "United States"}, "audience": {"@type": "BusinessAudience", "name": "TV and radio broadcast groups"}, "hasOfferCatalog": OFFER_CATALOG}])
 
 page("about",
      "About Factor42 Media | White-Label Ad Operations",
@@ -287,7 +330,7 @@ def legal(name, h1, title, desc, eyebrow):
 
 body_of = lambda n: (bodies / f"{n}.html").read_text(encoding="utf-8")
 legal("privacy-policy", "Privacy policy", "Privacy Policy | Factor42 Media", "How Factor42 Media collects, uses and protects information submitted through factor42media.com.", "Legal")
-legal("terms-of-service", "Terms of service", "Terms of Service | Factor42 Media", "The terms that govern use of the factor42media.com website.", "Legal")
+legal("terms-of-service", "Terms of service", "Terms of Service | Factor42 Media", "The terms that govern use of factor42media.com: acceptable use, content ownership, disclaimers and liability.", "Legal")
 legal("sla", "Service level agreements", "Service Level Agreements | Factor42 Media", "How Factor42 service level agreements work: trafficking turnaround, QA, pacing, reporting, communication and escalation.", "Our commitments")
 legal("security", "Security &amp; confidentiality", "Security & Confidentiality | Factor42 Media", "How Factor42 protects partner ad accounts, campaign data and client confidentiality.", "Trust")
 page("careers", "Careers at Factor42 Media | Ad Ops Jobs", "Join the ad ops team behind agencies and media groups. Factor42 hires ad ops specialists, campaign managers and analysts.",
@@ -393,7 +436,7 @@ def parse_article(path):
     if len(desc) > 158:
         desc = desc[:155].rsplit(" ", 1)[0].rstrip(",;:—-– ") + "…"
     return {"slug": slug, "label": label, "title": title, "html": "\n".join(out), "desc": desc,
-            "cat": cid, "cat_name": cname, "mins": max(3, math.ceil(words / 230)), "id": fid}
+            "cat": cid, "cat_name": cname, "mins": max(3, math.ceil(words / 230)), "id": fid, "words": words}
 
 
 posts = [parse_article(f) for f in sorted(ART_DIR.glob("*.txt"))]
@@ -406,6 +449,23 @@ for pst in posts:
     else:
         seen[base] = 1
 posts.sort(key=lambda x: x["title"].lower())
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from linker import link_library
+LINK_STATS = link_library(posts)
+
+# "Keep reading": 3 same-topic articles per post, favouring the least-linked ones, so every
+# article also gets several links from related articles. Skips articles already linked in the text.
+_rel_in = {x["slug"]: 0 for x in posts}
+RELATED = {}
+for pst in sorted(posts, key=lambda x: x["slug"]):
+    in_text = set(re.findall(r'<a href="([^"./][^"]*)">', pst["html"]))
+    cands = [x for x in posts if x["cat"] == pst["cat"] and x["slug"] != pst["slug"] and x["slug"] not in in_text]
+    cands.sort(key=lambda x: (_rel_in[x["slug"]] + LINK_STATS[x["slug"]][1], x["slug"]))
+    RELATED[pst["slug"]] = cands[:3]
+    for x in cands[:3]:
+        _rel_in[x["slug"]] += 1
+pst_by_slug = {x["slug"]: x for x in posts}
 BLOG_DIR = OUT / "blog"
 BLOG_DIR.mkdir(exist_ok=True)
 for old in BLOG_DIR.glob("*.html"):
@@ -414,10 +474,10 @@ for old in BLOG_DIR.glob("*.html"):
 CAT_ORDER = [("channels", "Channels & platforms"), ("strategy", "Strategy & budget"), ("partner", "Choosing a partner"), ("seasonal", "Seasonal & timing")]
 
 
-def card(pst, pre):
+def card(pst, pre, hl="h3"):
     return (f'<li class="post-card" data-cat="{pst["cat"]}"><a href="{pre}{pst["slug"]}">'
             f'<span class="label">{pst["cat_name"]} · {pst["mins"]} min read</span>'
-            f'<h3>{_html.escape(pst["title"])}</h3>'
+            f'<{hl}>{_html.escape(pst["title"])}</{hl}>'
             f'<p>{_html.escape(pst["desc"])}</p>'
             f'<span class="link-accent">Read article →</span></a></li>')
 
@@ -439,12 +499,13 @@ index_body = f"""<div class="wrap hero hero--wide hero--end">
 {"".join(filters)}
 </div>
 <ul class="post-grid">
-{"".join(card(x, "") for x in posts)}
+{"".join(card(x, "", "h2") for x in posts)}
 </ul>
 </div>
 </section>
 """
-idx_graph = [ORG, {"@type": "Blog", "@id": f"{BASE}/blog/#blog", "url": f"{BASE}/blog/", "name": "The Factor42 blog", "publisher": {"@id": f"{BASE}/#org"},
+idx_graph = [ORG, WEBSITE, crumbs(("Blog", "blog/")), {"@type": "Blog", "@id": f"{BASE}/blog/#blog", "url": f"{BASE}/blog/", "name": "The Factor42 blog", "isPartOf": {"@id": f"{BASE}/#website"}, "publisher": {"@id": f"{BASE}/#org"}, "inLanguage": "en-US",
+                   "description": "Guides on digital advertising channels, budgets and choosing a marketing partner, from Factor42 Media.",
                    "blogPost": [{"@type": "BlogPosting", "headline": x["title"], "url": f"{BASE}/blog/{x['slug']}"} for x in posts]}]
 html_idx = (head("Blog: Digital Advertising Guides | Factor42 Media",
                  "Practical guides on advertising channels, budgets and choosing the right partner, from the ad ops team at Factor42 Media.",
@@ -455,22 +516,30 @@ html_idx = (head("Blog: Digital Advertising Guides | Factor42 Media",
 
 # ---- posts
 for pst in posts:
-    related = [x for x in posts if x["cat"] == pst["cat"] and x["slug"] != pst["slug"]]
-    k = posts.index(pst)
-    related = (related[k % max(1, len(related)):] + related)[:3]
+    related = RELATED[pst["slug"]]
     url = f"{BASE}/blog/{pst['slug']}"
     graph = [ORG,
              {"@type": "BlogPosting", "@id": f"{url}#article", "headline": pst["title"], "description": pst["desc"], "url": url,
               "mainEntityOfPage": url, "datePublished": PUBLISHED, "dateModified": PUBLISHED,
               "author": {"@id": f"{BASE}/#org"}, "publisher": {"@id": f"{BASE}/#org"},
-              "image": f"{BASE}/assets/img/og-image.png", "articleSection": pst["cat_name"], "inLanguage": "en-US"},
+              "image": f"{BASE}/assets/img/og-image.png", "articleSection": pst["cat_name"], "inLanguage": "en-US",
+              "wordCount": pst["words"], "timeRequired": f"PT{pst['mins']}M", "isPartOf": {"@id": f"{BASE}/blog/#blog"},
+              "keywords": pst["cat_name"]}, WEBSITE,
              {"@type": "BreadcrumbList", "itemListElement": [
                  {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"},
                  {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{BASE}/blog/"},
                  {"@type": "ListItem", "position": 3, "name": pst["title"], "item": url}]}]
     extra = (f'<meta property="article:published_time" content="{PUBLISHED}">\n'
              f'<meta property="article:section" content="{pst["cat_name"]}">\n')
-    title_tag = pst["title"] if len(pst["title"]) <= 62 else pst["label"]
+    full = f"{pst['title']} | Factor42 Media"
+    if len(full) <= 65:
+        title_tag = full
+    elif len(pst["title"]) <= 65:
+        title_tag = pst["title"]
+    elif len(f"{pst['label']} | Factor42 Media") <= 65:
+        title_tag = f"{pst['label']} | Factor42 Media"
+    else:
+        title_tag = pst["label"]
     body = f"""<article class="wrap post">
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Blog</a><span aria-hidden="true">/</span><span>{pst["cat_name"]}</span></nav>
 <header class="post-head">
@@ -494,15 +563,95 @@ for pst in posts:
 </div>
 </section>
 """
-    page_html = (head(f"{_html.escape(title_tag)} | Factor42 Media", _html.escape(pst["desc"]), f"blog/{pst['slug']}", graph, pre="../", og_type="article", extra=extra)
+    page_html = (head(_html.escape(title_tag), _html.escape(pst["desc"]), f"blog/{pst['slug']}", graph, pre="../", og_type="article", extra=extra)
                  + header("blog/", pre="../") + '<main id="main">\n' + body + "</main>\n" + footer(pre="../"))
     (BLOG_DIR / f"{pst['slug']}.html").write_text(page_html, encoding="utf-8")
 
+# ---- "From the blog" sections on service pages (placeholders in bodies/*.html)
+for _f in ("index.html", "agencies.html", "broadcasters.html"):
+    _path = OUT / _f; _src = _path.read_text(encoding="utf-8")
+    def _fb(m):
+        picks = [pst_by_slug[x] for x in m.group(1).split(",")]
+        return ('<section class="section section-white" aria-labelledby="fromblog-title">\n<div class="wrap">\n'
+                '<div class="related-head"><h2 class="section-title" id="fromblog-title">From the blog</h2><a class="link-accent" href="blog/">All articles →</a></div>\n'
+                '<ul class="post-grid post-grid--3">\n' + "".join(card(x, "blog/") for x in picks) + "\n</ul>\n</div>\n</section>\n")
+    _path.write_text(re.sub(r"<!--FROM_BLOG:([a-z0-9,-]+)-->", _fb, _src), encoding="utf-8")
+
+# ---- robots.txt: open to search and AI crawlers, explicitly
+AI_BOTS = ["Googlebot", "Bingbot", "Google-Extended", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
+           "Claude-User", "PerplexityBot", "Perplexity-User", "Applebot", "Applebot-Extended", "Amazonbot", "CCBot", "meta-externalagent"]
+(OUT / "robots.txt").write_text(
+    "# Factor42 Media: search engines and AI assistants are welcome to crawl and cite this site.\n"
+    + "".join(f"User-agent: {b}\n" for b in AI_BOTS) + "Allow: /\nDisallow: /thank-you\nDisallow: /_build/\nDisallow: /_worker/\n\n"
+    "User-agent: *\nAllow: /\nDisallow: /thank-you\nDisallow: /_build/\nDisallow: /_worker/\n\n"
+    f"Sitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
+
+# ---- llms.txt (index for AI assistants) and llms-full.txt (full text)
+def _plain(h):
+    t = re.sub(r"<h2>(.*?)</h2>", r"\n## \1\n", h)
+    t = re.sub(r"<li>(.*?)</li>", r"- \1\n", t)
+    t = re.sub(r"</p>", "\n", t)
+    return _html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
+
+ABOUT_LLM = ("> Factor42 Media is a white-label ad operations and campaign fulfillment company. Agencies and TV and radio broadcast "
+             "groups sell digital campaigns to their clients; Factor42 traffics, QAs, optimizes and reports on those campaigns under "
+             "the partner's brand.\n\n"
+             "- Channels: Google Ads (Search, Display, Performance Max, Shopping), YouTube, Meta, Instagram, TikTok, LinkedIn, Reddit, X, "
+             "Pinterest, Snapchat, programmatic display, video and audio (DV360, The Trade Desk, Xandr, Amazon DSP), streaming TV (OTT/CTV), "
+             "digital out-of-home (DOOH) and email marketing.\n"
+             "- Results: 98.6% campaign delivery rate; 100+ agency and media partners; 12-minute average trafficking turnaround; "
+             "Google Ads campaigns launch in under 4 hours on average.\n"
+             "- Who it serves: marketing agencies (white-label ad ops, PPC and paid social) and TV/radio broadcast groups "
+             "(digital fulfillment for station sellers, market-level reporting).\n"
+             "- Company: Factor42 Media Inc., 8 The Green, Ste E, Dover, DE 19901, United States. Contact: https://factor42media.com/contact\n")
+CORE = [("Home", "", "Overview, services, process and every channel Factor42 runs"),
+        ("For agencies", "agencies", "White-label ad ops, PPC and paid social for agencies; economics and FAQ"),
+        ("For broadcasters", "broadcasters", "Digital menu for TV and radio sellers, order-to-delivery workflow, market reporting, switchover"),
+        ("About", "about", "Company and working principles"),
+        ("Service level agreements", "sla", "What Factor42 SLAs cover: turnaround, QA, pacing, reporting, escalation"),
+        ("Security & confidentiality", "security", "Account access, confidentiality and data handling"),
+        ("Book a consultation", "contact", "Request a fulfillment plan and wholesale rate card"),
+        ("Blog", "blog/", "105 guides on advertising channels, budgets and choosing a marketing partner")]
+lines = ["# Factor42 Media", "", ABOUT_LLM, "## Pages", ""]
+lines += [f"- [{n}]({BASE}/{u}): {d}" for n, u, d in CORE]
+for cid, cname in CAT_ORDER:
+    lines += ["", f"## Blog: {cname}", ""]
+    lines += [f"- [{x['title']}]({BASE}/blog/{x['slug']}): {x['desc']}" for x in posts if x["cat"] == cid]
+lines += ["", "## Optional", "", f"- [Full text of every page and article]({BASE}/llms-full.txt)"]
+(OUT / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+full = ["# Factor42 Media: full text", "", ABOUT_LLM]
+for cid, cname in CAT_ORDER:
+    for x in posts:
+        if x["cat"] == cid:
+            full += ["", "---", "", f"# {x['title']}", f"URL: {BASE}/blog/{x['slug']}", f"Topic: {cname}", "", _plain(x["html"])]
+(OUT / "llms-full.txt").write_text("\n".join(full) + "\n", encoding="utf-8")
+
 # ---- sitemap
 core = [("", 1.0), ("agencies", 0.9), ("broadcasters", 0.9), ("about", 0.6), ("contact", 0.7), ("blog/", 0.7), ("careers", 0.4), ("sla", 0.4), ("security", 0.4), ("privacy-policy", 0.2), ("terms-of-service", 0.2)]
+import subprocess, datetime
+
+
+def lastmod(rel_file):
+    """Today if the generated file differs from the last commit, else the date it was last committed."""
+    try:
+        old = subprocess.run(["git", "-C", str(OUT), "show", f"HEAD:{rel_file}"], capture_output=True, check=True).stdout
+        if old == (OUT / rel_file).read_bytes():
+            d = subprocess.run(["git", "-C", str(OUT), "log", "-1", "--format=%cs", "--", rel_file], capture_output=True, text=True).stdout.strip()
+            if d:
+                return d
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+    return datetime.date.today().isoformat()
+
+
+def _file_for(u):
+    return "index.html" if u == "" else (u + "index.html" if u.endswith("/") else u + ".html")
+
+
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-sm += [f"  <url><loc>{BASE}/{u}</loc><lastmod>{PUBLISHED}</lastmod><priority>{pr}</priority></url>" for u, pr in core]
-sm += [f"  <url><loc>{BASE}/blog/{x['slug']}</loc><lastmod>{PUBLISHED}</lastmod><priority>0.5</priority></url>" for x in posts]
+sm += [f"  <url><loc>{BASE}/{u}</loc><lastmod>{lastmod(_file_for(u))}</lastmod><priority>{pr}</priority></url>" for u, pr in core]
+sm += [f"  <url><loc>{BASE}/blog/{x['slug']}</loc><lastmod>{lastmod('blog/' + x['slug'] + '.html')}</lastmod><priority>0.5</priority></url>" for x in posts]
 sm.append("</urlset>")
 (OUT / "sitemap.xml").write_text("\n".join(sm) + "\n")
 print("blog:", len(posts), "posts;", {n: counts[c] for c, n in CAT_ORDER})
