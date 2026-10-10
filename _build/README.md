@@ -4,6 +4,7 @@ The pages in the repo root and `blog/` are generated from these files. Edit the 
 
 ```
 python3 _build/build_pages.py .        # all pages, blog and sitemap.xml
+python3 _build/render_og.py .          # share image per article (only new/changed titles); then rerun build_pages.py
 python3 _build/audit_site.py .        # SEO, schema, brand and internal-link audit (add -v for every finding)
 python3 _build/check_site.py . /tmp/shots   # browser check of pages and links (needs playwright)
 ```

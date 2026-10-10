@@ -79,7 +79,7 @@ def mark(on_ink=False, cls="brand-mark", size=None):
 BRAND_WORD = '<span class="brand-word">Factor<sup>42</sup></span>'
 
 
-def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website", extra=""):
+def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website", extra="", og_image=None, og_alt=None):
     a = pre
     url = f"{BASE}/{path}"
     ld = ""
@@ -103,10 +103,10 @@ def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website"
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}/assets/img/og-image.png">
+<meta property="og:image" content="{og_image or BASE + '/assets/img/og-image.png'}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Factor42 Media — the ad ops team behind your brand">
+<meta property="og:image:alt" content="{og_alt or 'Factor42 Media — the ad ops team behind your brand'}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B1626">
 <link rel="icon" href="{a}assets/img/favicon.svg" type="image/svg+xml">
@@ -518,11 +518,13 @@ html_idx = (head("Blog: Digital Advertising Guides | Factor42 Media",
 for pst in posts:
     related = RELATED[pst["slug"]]
     url = f"{BASE}/blog/{pst['slug']}"
+    _img_file = OUT / "assets" / "img" / "blog" / f"{pst['slug']}.png"
+    post_img = f"{BASE}/assets/img/blog/{pst['slug']}.png" if _img_file.exists() else f"{BASE}/assets/img/og-image.png"
     graph = [ORG,
              {"@type": "BlogPosting", "@id": f"{url}#article", "headline": pst["title"], "description": pst["desc"], "url": url,
               "mainEntityOfPage": url, "datePublished": PUBLISHED, "dateModified": PUBLISHED,
               "author": {"@id": f"{BASE}/#org"}, "publisher": {"@id": f"{BASE}/#org"},
-              "image": f"{BASE}/assets/img/og-image.png", "articleSection": pst["cat_name"], "inLanguage": "en-US",
+              "image": {"@type": "ImageObject", "url": post_img, "width": 1200, "height": 630}, "articleSection": pst["cat_name"], "inLanguage": "en-US",
               "wordCount": pst["words"], "timeRequired": f"PT{pst['mins']}M", "isPartOf": {"@id": f"{BASE}/blog/#blog"},
               "keywords": pst["cat_name"]}, WEBSITE,
              {"@type": "BreadcrumbList", "itemListElement": [
@@ -563,7 +565,7 @@ for pst in posts:
 </div>
 </section>
 """
-    page_html = (head(_html.escape(title_tag), _html.escape(pst["desc"]), f"blog/{pst['slug']}", graph, pre="../", og_type="article", extra=extra)
+    page_html = (head(_html.escape(title_tag), _html.escape(pst["desc"]), f"blog/{pst['slug']}", graph, pre="../", og_type="article", extra=extra, og_image=post_img, og_alt=_html.escape(pst["title"]))
                  + header("blog/", pre="../") + '<main id="main">\n' + body + "</main>\n" + footer(pre="../"))
     (BLOG_DIR / f"{pst['slug']}.html").write_text(page_html, encoding="utf-8")
 

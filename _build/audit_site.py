@@ -110,6 +110,9 @@ for u, p in pages.items():
         for k in ("og:title", "og:description", "og:image", "og:url", "twitter:card"):
             if k not in p.meta: flag(u, "ERROR", f"missing {k}")
         if p.meta.get("og:url") and p.meta["og:url"] != u: flag(u, "ERROR", f"og:url {p.meta['og:url']} != {u}")
+        img = p.meta.get("og:image", "")
+        if img.startswith(BASE) and not (ROOT / img[len(BASE) + 1:]).exists(): flag(u, "ERROR", f"og:image file missing: {img}")
+        if "/blog/" in u and u != f"{BASE}/blog/" and "/assets/img/blog/" not in img: flag(u, "WARN", "article uses the generic share image")
         if u not in sitemap: flag(u, "ERROR", "indexable page missing from sitemap")
     h1s = [h for h in p.h if h[0] == "h1"]
     if len(h1s) != 1: flag(u, "ERROR", f"{len(h1s)} <h1> tags")
