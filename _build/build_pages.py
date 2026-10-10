@@ -193,17 +193,19 @@ def page(name, title, desc, path, active, body, graph=None, noindex=False):
 
 
 def redirect_page(name, target, title):
+    target = f"{BASE}/{target}"  # absolute: these are also requested with a trailing slash
     html = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>{title}</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="{BASE}/{target}">
+<link rel="canonical" href="{target.split("#")[0]}">
 <meta http-equiv="refresh" content="0; url={target}">
+<script>location.replace({json.dumps(target)});</script>
 </head>
 <body>
-<p>This page has moved to <a href="{target}">{BASE}/{target}</a>.</p>
+<p>This page has moved to <a href="{target}">{target}</a>.</p>
 </body>
 </html>
 """
@@ -504,3 +506,71 @@ sm += [f"  <url><loc>{BASE}/blog/{x['slug']}</loc><lastmod>{PUBLISHED}</lastmod>
 sm.append("</urlset>")
 (OUT / "sitemap.xml").write_text("\n".join(sm) + "\n")
 print("blog:", len(posts), "posts;", {n: counts[c] for c, n in CAT_ORDER})
+
+
+# ================================================================ old-site redirects
+# Addresses from the previous factor42media.com that Google still has. Each gets a static
+# page that forwards (instant meta refresh, which Google treats as a permanent redirect)
+# and declares the new page canonical. Both /blog/<old>/ and /blog-<old>.html forms existed.
+# Runs after the blog build, which clears blog/*.html.
+OLD_BLOG = {
+    # same article, new address
+    "overpaying-marketing": "blog/youre-probably-overpaying-to-run-your-marketing",
+    "what-agencies-charge": "blog/what-agencies-actually-charge",
+    "three-marketing-models": "blog/in-house-agency-or-consolidated-partner",
+    "cant-afford-agency": "blog/when-you-cant-afford-an-agency",
+    "streaming-tv": "blog/streaming-tv-for-the-price-of-facebook",
+    "one-dashboard": "blog/one-dashboard-to-rule-them-all",
+    "retainer-math": "blog/the-hidden-math-of-agency-retainers",
+    "seven-logins": "blog/seven-logins-six-reports-one-headache",
+    "reddit-tiktok-dooh": "blog/reddit-tiktok-and-dooh",
+    "audit-marketing-spend": "blog/audit-your-marketing-spend-in-an-afternoon",
+    "third-option": "blog/too-small-for-an-agency-too-busy-to-diy",
+    "82-percent-hard-way": "blog/why-82-run-marketing-the-hard-way",
+    "tool-trap": "blog/the-tool-trap",
+    "stop-paying-three-vendors": "blog/stop-paying-three-vendors-to-do-one-job",
+    "every-channel-one-place": "blog/every-channel-one-place",
+    # retired agency-facing posts: closest current page
+    "google-ads-vs-programmatic": "blog/programmatic-without-the-agency-markup",
+    "dsp-consolidation": "blog/what-consolidated-media-buying-is",
+    "vetting-ad-ops-partner": "blog/7-questions-to-vet-a-provider",
+    "paid-social-launch-checklist": "agencies#ppc",
+    "white-label-trafficking-retention": "agencies",
+    "trafficking-mistakes-retainers": "agencies",
+}
+
+
+def forward_page(target, title):
+    url = f"{BASE}/{target}"
+    canon = url.split("#")[0]
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{title}</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="{canon}">
+<meta http-equiv="refresh" content="0; url={url}">
+<script>location.replace({json.dumps(url)});</script>
+</head>
+<body>
+<p>This page has moved to <a href="{url}">{url}</a>.</p>
+</body>
+</html>
+"""
+
+
+post_slugs = {x["slug"] for x in posts}
+redirects_written = 0
+for old, target in OLD_BLOG.items():
+    t_path = target.split("#")[0]
+    assert (OUT / f"{t_path}.html").exists(), f"redirect target missing: {target}"
+    t_title = next((x["title"] for x in posts if f"blog/{x['slug']}" == t_path), "Factor42 Media")
+    page_html = forward_page(target, f"{_html.escape(t_title)} | Factor42 Media")
+    # /blog/<old> and /blog/<old>/  (GitHub Pages serves blog/<old>.html for both)
+    if old not in post_slugs:
+        (BLOG_DIR / f"{old}.html").write_text(page_html, encoding="utf-8"); redirects_written += 1
+    # /blog-<old>.html
+    (OUT / f"blog-{old}.html").write_text(page_html, encoding="utf-8"); redirects_written += 1
+(OUT / "blog.html").write_text(forward_page("blog/", "Blog | Factor42 Media"), encoding="utf-8"); redirects_written += 1
+print("old-site redirects:", redirects_written)
