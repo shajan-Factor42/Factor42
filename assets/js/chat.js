@@ -10,9 +10,10 @@
   var ENDPOINT = me && me.getAttribute("data-endpoint");
   if (!ENDPOINT) return;
 
+  var NAME = (me.getAttribute("data-name") || "").replace(/[^A-Za-z .'-]/g, "").slice(0, 30);
   var KEY = "f42-chat-v1";
   var BOOK = "https://factor42media.com/contact";
-  var GREETING = "Hi, I'm Factor42's assistant. Ask me how white-label fulfillment works, which channels we run, or how to get started.";
+  var GREETING = "Hi, I'm " + (NAME ? NAME + ", Factor42's AI assistant." : "Factor42's assistant.") + " Ask me how white-label fulfillment works, which channels we run, or how to get started.";
   var CHIPS = ["How does white-label work?", "Which channels do you run?", "What does it cost?", "Will my clients know?"];
 
   function track(event, extra) {
@@ -95,10 +96,10 @@ font-family:Geist,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;f
   }
 
   var style = el("style", null, css);
-  var btn = el("button", { id: "dtc-btn", type: "button", "aria-label": "Chat with Factor42", "aria-expanded": "false", "aria-controls": "dtc-panel" },
+  var btn = el("button", { id: "dtc-btn", type: "button", "aria-label": NAME ? "Chat with " + NAME + ", Factor42's AI assistant" : "Chat with Factor42", "aria-expanded": "false", "aria-controls": "dtc-panel" },
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1.1-4.4A8 8 0 1 1 21 12z"/></svg>');
   var panel = el("div", { id: "dtc-panel", role: "dialog", "aria-label": "Factor42 chat", "aria-modal": "false" },
-    '<div id="dtc-head"><div><b>Ask Factor42</b><span>AI assistant · usually instant</span></div><button id="dtc-x" type="button" aria-label="Close chat">×</button></div>' +
+    '<div id="dtc-head"><div><b>' + (NAME ? esc(NAME) + ' at Factor42' : 'Ask Factor42') + '</b><span>AI assistant · usually instant</span></div><button id="dtc-x" type="button" aria-label="Close chat">×</button></div>' +
     '<div id="dtc-log" aria-live="polite"></div>' +
     '<form id="dtc-form"><textarea id="dtc-in" rows="1" maxlength="1200" placeholder="Type your question…" aria-label="Your message"></textarea><button id="dtc-send" type="submit">Send</button></form>' +
     '<div id="dtc-foot">AI answers can be wrong. Chats are saved for 90 days to improve answers; don\'t share sensitive info. <a href="/privacy-policy">Privacy</a> · <a href="' + BOOK + '">Talk to a person</a></div>');

@@ -15,6 +15,7 @@ FORM_ENDPOINT = ""
 LINKEDIN = "https://www.linkedin.com/company/factor42media/"
 # Website chat assistant: the shared chat relay (Deep Thought repo, chat-worker/). Empty string turns the chat off.
 CHAT_ENDPOINT = "https://deepthought-chat.shajan.workers.dev/chat"
+CHAT_NAME = "Emma"  # the chat assistant's name (greeting, header and the relay's instructions)
 
 CHANNELS = [
     ("Search advertising (Google Ads)", "Search, Display, Performance Max and Shopping campaign setup, bidding and optimization"),
@@ -91,7 +92,7 @@ def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website"
               + "</script>")
     robots = "noindex, follow" if noindex else "index, follow, max-image-preview:large"
     canonical = "" if noindex else f'<link rel="canonical" href="{url}">\n'
-    chat = f'<script src="{a}assets/js/chat.js" data-endpoint="{CHAT_ENDPOINT}" defer></script>\n' if CHAT_ENDPOINT and not noindex else ""
+    chat = f'<script src="{a}assets/js/chat.js" data-endpoint="{CHAT_ENDPOINT}" data-name="{CHAT_NAME}" defer></script>\n' if CHAT_ENDPOINT and not noindex else ""
     fb = '<meta name="facebook-domain-verification" content="1ievhlaysp0e671sdb05lk6szhztvl">\n' if path == "" else ""
     return f"""<!doctype html>
 <html lang="en" class="no-js">
@@ -814,6 +815,7 @@ for q, a in FAQ + [qa for x in SERVICES for qa in x["faq"]]:
     if q not in _seen:
         _seen.add(q); _faq.append({"q": q, "a": a})
 CHAT_KNOWLEDGE = {
+    "assistantName": CHAT_NAME,
     "organization": {
         "name": "Factor42 Media", "legalName": "Factor42 Media Inc.", "slogan": ORG["slogan"], "description": ORG["description"],
         "audience": "Marketing agencies (white-label ad ops, PPC and paid social) and TV and radio broadcast groups (digital fulfillment for station sellers, reported by market).",
