@@ -13,6 +13,8 @@ WEB3FORMS_KEY = "afa90fc4-141b-45da-a8cb-7c4adcd1951d"
 # Set to the Cloudflare Worker URL (see _worker/README.md) to send the form through Resend instead of Web3Forms
 FORM_ENDPOINT = ""
 LINKEDIN = "https://www.linkedin.com/company/factor42media/"
+# Website chat assistant: the shared chat relay (Deep Thought repo, chat-worker/). Empty string turns the chat off.
+CHAT_ENDPOINT = "https://deepthought-chat.shajan.workers.dev/chat"
 
 CHANNELS = [
     ("Search advertising (Google Ads)", "Search, Display, Performance Max and Shopping campaign setup, bidding and optimization"),
@@ -89,6 +91,7 @@ def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website"
               + "</script>")
     robots = "noindex, follow" if noindex else "index, follow, max-image-preview:large"
     canonical = "" if noindex else f'<link rel="canonical" href="{url}">\n'
+    chat = f'<script src="{a}assets/js/chat.js" data-endpoint="{CHAT_ENDPOINT}" defer></script>\n' if CHAT_ENDPOINT and not noindex else ""
     fb = '<meta name="facebook-domain-verification" content="1ievhlaysp0e671sdb05lk6szhztvl">\n' if path == "" else ""
     return f"""<!doctype html>
 <html lang="en" class="no-js">
@@ -117,7 +120,7 @@ def head(title, desc, path, graph=None, noindex=False, pre="", og_type="website"
 <link rel="stylesheet" href="{a}assets/css/site.css">
 <script>document.documentElement.className='js';</script>
 <script src="{a}assets/js/site.js" defer></script>
-{ld}
+{chat}{ld}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -804,6 +807,32 @@ for cid, cname in CAT_ORDER:
     lines += [f"- [{x['title']}]({BASE}/blog/{x['slug']}): {x['desc']}" for x in posts if x["cat"] == cid]
 lines += ["", "## Optional", "", f"- [Full text of every page and article]({BASE}/llms-full.txt)"]
 (OUT / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+# ---- chat-knowledge.json: what the website chat assistant knows (read by the chat relay every 10 minutes)
+_faq, _seen = [], set()
+for q, a in FAQ + [qa for x in SERVICES for qa in x["faq"]]:
+    if q not in _seen:
+        _seen.add(q); _faq.append({"q": q, "a": a})
+CHAT_KNOWLEDGE = {
+    "organization": {
+        "name": "Factor42 Media", "legalName": "Factor42 Media Inc.", "slogan": ORG["slogan"], "description": ORG["description"],
+        "audience": "Marketing agencies (white-label ad ops, PPC and paid social) and TV and radio broadcast groups (digital fulfillment for station sellers, reported by market).",
+        "figures": ["98.6% campaign delivery rate", "100+ agency and media partners", "12-minute average trafficking turnaround",
+                    "Google Ads campaigns launch in under 4 hours on average", "automation cuts manual overhead by 70%",
+                    "12+ DSPs and platforms managed", "connected TV campaigns run with 95%+ completion rates", "50+ DOOH screen formats"],
+        "pricing": "Wholesale fulfillment rate priced by channel mix and volume; the partner sets their own retail price and keeps the margin. Rate card after a consultation.",
+        "address": "8 The Green, Ste E, Dover, DE 19901, United States",
+        "contactPage": f"{BASE}/contact", "linkedin": LINKEDIN,
+    },
+    "services": [{"name": x["eyebrow"], "url": f"{BASE}/{x['slug']}", "summary": " ".join(x["what"]),
+                  "includes": [t for t, _ in x["includes"]] if isinstance(x["includes"], list) else [y["nav"] for y in SERVICES if y["slug"] != x["slug"]],
+                  "platforms": x["platforms"]} for x in SERVICES],
+    "faq": _faq,
+    "pages": [{"title": n, "url": f"{BASE}/{u}"} for n, u, _ in CORE]
+             + [{"title": x["title"], "url": f"{BASE}/blog/{x['slug']}"} for x in posts],
+    "llmsTxt": (OUT / "llms.txt").read_text(encoding="utf-8").split("\n## Blog:")[0].strip(),
+}
+(OUT / "chat-knowledge.json").write_text(json.dumps(CHAT_KNOWLEDGE, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 full = ["# Factor42 Media: full text", "", ABOUT_LLM]
 for cid, cname in CAT_ORDER:
