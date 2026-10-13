@@ -15,6 +15,7 @@ FORM_ENDPOINT = ""
 LINKEDIN = "https://www.linkedin.com/company/factor42media/"
 INSTAGRAM = "https://www.instagram.com/factor42media/"
 FACEBOOK = "https://www.facebook.com/Factor42AdOps/"
+YOUTUBE = "https://www.youtube.com/@Factor42Media"
 # Website chat assistant: the shared chat relay (Deep Thought repo, chat-worker/). Empty string turns the chat off.
 CHAT_ENDPOINT = "https://deepthought-chat.shajan.workers.dev/chat"
 CHAT_NAME = "Emma"  # the chat assistant's name (greeting, header and the relay's instructions)
@@ -52,7 +53,7 @@ ORG = {
     "knowsAbout": ["White-label ad operations", "Campaign fulfillment", "Ad trafficking", "Programmatic advertising",
                    "Connected TV advertising", "Paid search", "Paid social", "Digital out-of-home advertising",
                    "Email marketing", "Campaign reporting", "Media buying"],
-    "sameAs": [LINKEDIN, FACEBOOK, INSTAGRAM],
+    "sameAs": [LINKEDIN, FACEBOOK, INSTAGRAM, YOUTUBE],
 }
 WEBSITE = {"@type": "WebSite", "@id": f"{BASE}/#website", "url": f"{BASE}/", "name": "Factor42 Media",
            "publisher": {"@id": f"{BASE}/#org"}, "inLanguage": "en-US"}
@@ -202,6 +203,7 @@ def footer(pre=""):
 <a href="{LINKEDIN}" rel="noopener">LinkedIn →</a>
 <a href="{FACEBOOK}" rel="noopener">Facebook →</a>
 <a href="{INSTAGRAM}" rel="noopener">Instagram →</a>
+<a href="{YOUTUBE}" rel="noopener">YouTube →</a>
 </div>
 <div class="footer-col">
 <h2>Services</h2>
@@ -828,7 +830,7 @@ CHAT_KNOWLEDGE = {
                     "12+ DSPs and platforms managed", "connected TV campaigns run with 95%+ completion rates", "50+ DOOH screen formats"],
         "pricing": "Wholesale fulfillment rate priced by channel mix and volume; the partner sets their own retail price and keeps the margin. Rate card after a consultation.",
         "address": "8 The Green, Ste E, Dover, DE 19901, United States",
-        "contactPage": f"{BASE}/contact", "linkedin": LINKEDIN, "instagram": INSTAGRAM, "facebook": FACEBOOK,
+        "contactPage": f"{BASE}/contact", "linkedin": LINKEDIN, "instagram": INSTAGRAM, "facebook": FACEBOOK, "youtube": YOUTUBE,
     },
     "services": [{"name": x["eyebrow"], "url": f"{BASE}/{x['slug']}", "summary": " ".join(x["what"]),
                   "includes": [t for t, _ in x["includes"]] if isinstance(x["includes"], list) else [y["nav"] for y in SERVICES if y["slug"] != x["slug"]],
