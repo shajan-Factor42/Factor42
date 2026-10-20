@@ -400,8 +400,8 @@ legend { font-size: 14px; font-weight: 600; padding: 0; margin-bottom: 10px; }
 .prose > * + * { margin-top: 1.1em; }
 .prose h2 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin-top: 1.9em; }
 .prose ul { display: grid; gap: 10px; padding: 0; }
-.prose li { display: flex; gap: 14px; align-items: baseline; }
-.prose li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); flex-shrink: 0; position: relative; top: -2px; }
+.prose li { position: relative; padding-left: 22px; }
+.prose li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
 .prose em { font-style: italic; }
 .post-cta { margin-top: 56px; padding: 28px; border-radius: 18px; background: var(--ink); color: var(--on-ink); display: grid; gap: 20px; align-items: center; }
 .post-cta-title { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15; margin-top: 8px; }

@@ -101,7 +101,7 @@ SERVICES = [
             ("Which PPC platforms do you manage?",
              "Google Ads (Search, Display, Performance Max, Shopping), YouTube, Meta (Facebook and Instagram), TikTok, LinkedIn and Reddit, with Google Analytics 4 and Campaign Manager 360 integration."),
         ],
-        "blog": ["what-is-search-engine-marketing", "a-simple-guide-to-a-b-testing", "the-new-reality-of-social-media"],
+        "blog": ["white-label-ppc-explained", "what-white-label-ppc-includes", "what-is-search-engine-marketing"],
         "service_type": "White-label PPC management",
     },
     {
@@ -269,7 +269,7 @@ SERVICES = [
              "Agencies that want to scale without hiring, and TV and radio broadcast groups that sell digital alongside airtime and need fulfillment for every market."),
             COMMON_FAQ["accounts"], COMMON_FAQ["clients"], COMMON_FAQ["cost"],
         ],
-        "blog": ["beyond-the-click", "the-single-point-of-contact-advantage", "why-your-channels-should-talk"],
+        "blog": ["when-to-outsource-ad-operations", "q4-ad-operations-surge", "beyond-the-click"],
         "service_type": "Outsourced ad operations and ad trafficking",
     },
 ]

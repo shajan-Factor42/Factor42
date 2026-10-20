@@ -1,0 +1,85 @@
+White-Label PPC Explained
+
+White-Label PPC: How Agencies Add Paid Search Without Hiring
+
+A client asks whether you can run their Google Ads. You know the honest answer: not without another hire, a few weeks of training and a stack of new tools. So you either turn the work away, pass the client to someone who may keep them, or say yes and hope your team can absorb it.
+
+There is a fourth option. What is white-label PPC? It lets your agency sell paid search and paid social under your own brand while a specialist team does the hands-on work behind the scenes. Here is how it works, what your client sees, and how to pick a partner without putting the relationship at risk.
+
+What is white-label PPC?
+
+White-label PPC is pay-per-click advertising that a specialist partner builds and manages for your clients while every client-facing piece carries your agency's brand. Your agency sells the service, sets the price and owns the relationship. The partner handles the campaign work: builds, bidding, keywords, audiences, creative testing, pacing and reporting.
+
+To the client, it is simply your agency's PPC service. Factor42's [white-label PPC management](/white-label-ppc) works exactly this way. The reports have your logo. The emails come from your team. The strategy conversations happen in your meetings. The partner is the production line you don't have to build, staff or manage.
+
+For the agency, the business model is wholesale and retail. You pay the partner a fulfillment rate for the work and charge your client a retail rate for the service. The difference is your margin, and you keep it without adding payroll.
+
+Why do agencies use white-label PPC instead of hiring?
+
+Agencies use white-label PPC because it turns paid search into a service they can sell this week instead of a team they have to build this year. Hiring a capable PPC specialist takes months, and one person rarely covers search, shopping, video and paid social equally well. You also inherit the tools, the training and the risk that the hire leaves and takes the know-how with them.
+
+A white-label partner removes most of that. You get a team that already knows the platforms, already has a process, and can absorb new accounts without a hiring cycle. If a big client lands in October, you don't have to find someone before November; we cover that scenario in [how agencies handle the Q4 ad surge](/blog/q4-ad-operations-surge). If a client leaves, you are not carrying an idle salary.
+
+It also protects focus. Your account managers keep doing what clients value most: understanding the business, setting goals and presenting results. The partner keeps the campaigns tuned between those conversations.
+
+How does the handoff between agency and partner work?
+
+The handoff works best as one repeatable loop: your agency sends a brief, the partner builds and launches, and results flow back to you to present. The details matter, so here is what a clean version looks like:
+
+Brief: your team captures the client's goals, budget, geography, offers and any brand rules in a single brief format.
+Access: the client's ad accounts stay in your control, and you grant the partner access to work inside them.
+Build: the partner builds the campaigns, sets tracking and checks creative against platform specs before anything goes live.
+Launch: campaigns go live and pacing starts. At Factor42, Google Ads campaigns launch in under four hours on average once the brief and creative are in.
+Optimize: the partner adjusts bids, budgets, keywords and audiences on a regular cadence and flags anything that needs a client decision.
+Report: results come back in your format, under your logo, ready for your account manager to present.
+
+The point of the loop is that your team never has to chase status. You send a brief, you get a live campaign, and you get a report you can put in front of the client.
+
+What does the client see?
+
+The client sees your agency and nothing else. That is the whole point of white-label work, and a good partner treats it as a hard rule rather than a preference.
+
+In practice, that means reports, dashboards and wrap-ups carry your branding. Any communication the client receives comes from your team. The partner works team-to-team with you and does not contact your clients unless you ask them to.
+
+Ask any partner you are considering how they handle this, specifically. Who sends the reports? Whose name is on the dashboard login? What happens if the client calls with a question? The answers should all point back to you.
+
+What should a partner handle, and what stays with you?
+
+A partner should handle the production work, and your agency should keep everything that defines the client relationship. Drawing that line clearly up front prevents most of the friction that sinks white-label partnerships.
+
+The partner typically handles:
+Campaign builds across search, shopping, display, video and paid social.
+Bidding, budget pacing and bid adjustments.
+Negative keyword management and audience layering.
+Ad copy and creative testing, with spec checks before launch.
+Daily pacing checks, regular optimization reviews and branded reporting.
+
+Your agency typically keeps:
+The client relationship and every client conversation.
+Goals, budgets and the overall strategy.
+Pricing, contracts and billing to the client.
+Approval of anything that changes the client's brand or offer.
+
+The cleanest arrangements also settle account ownership. Your client's ad accounts should belong to the client or to your agency, never to the partner. The partner works inside accounts you control, so you can see who has access and remove it at any time. If the partnership ever ends, nothing walks out the door with them.
+
+How do you choose a white-label PPC partner?
+
+Choose a white-label PPC partner by testing four things: platform coverage, speed, transparency and how they protect your client relationship. Price matters, but a cheap partner who misses launches or contacts your clients will cost you far more than the fee.
+
+Platform coverage: can they run the channels your clients actually ask for? Google Ads covers search, Performance Max, shopping, display and YouTube, but most clients also want Meta, and some want TikTok, LinkedIn or Reddit. A partner who handles search and social together saves you from managing two vendors.
+
+Speed: ask how long it takes from a complete brief to a live campaign, and ask for the average, not the best case. Slow launches are the most visible failure in white-label work because your client feels them directly.
+
+Transparency: ask what you will see and how often. Daily pacing visibility and regular optimization notes let you answer client questions without waiting on the partner.
+
+Relationship protection: ask who owns the ad accounts, who sends reports, and whether the partner ever contacts clients directly. The right answers are you, you, and only when you ask.
+
+It also helps to ask how they handle a surge. If you land three new clients in the same month, can the partner absorb them without slipping on existing accounts? The whole value of white-label PPC is that you can say yes to growth, so the partner has to be able to say yes too.
+
+Is white-label PPC right for your agency?
+
+White-label PPC is a good fit if clients are asking for paid search or paid social that your team can't deliver well today, or if your PPC team is stretched thin. It is less useful if PPC is already your core strength and your team has room to grow it.
+
+A simple test: count the PPC requests you turned down, referred out or delivered late in the last six months. If that number is more than zero, there is revenue sitting on the table, and a white-label partner is the fastest way to pick it up without changing who your clients deal with.
+
+If you want to see how this would work for your agency, [book a free consultation](/contact). We will walk through your channel mix and how the handoff would fit your team. You can also read [what white-label PPC management should include](/blog/what-white-label-ppc-includes) before you talk to any partner.

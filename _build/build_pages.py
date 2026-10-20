@@ -541,6 +541,25 @@ import re, html as _html, math
 
 ART_DIR = pathlib.Path(__file__).parent / "articles"
 PUBLISHED = "2026-09-28"
+# per-article publish dates (articles not listed use PUBLISHED)
+POST_DATES = {"white-label-ppc-explained": "2026-10-20", "what-white-label-ppc-includes": "2026-10-20",
+              "q4-ad-operations-surge": "2026-10-20", "when-to-outsource-ad-operations": "2026-10-20"}
+# hand-written meta descriptions (otherwise the first paragraph is used)
+POST_DESC = {
+    "white-label-ppc-explained": "What is white-label PPC? How agencies sell Google Ads and paid social under their own brand while a partner does the work, and how to choose one.",
+    "what-white-label-ppc-includes": "What's included in white-label PPC management: builds, bidding, keywords, audiences, testing and reporting, what stays with your agency, and what to ask.",
+    "q4-ad-operations-surge": "Q4 ad operations without the burnout: why the holiday surge overloads agency ad ops, which tasks spike first, and how to plan overflow coverage early.",
+    "when-to-outsource-ad-operations": "When to outsource ad operations: what outsourced ad ops covers, the signs for agencies and station groups, and how to keep control of your accounts.",
+}
+# per-article SEO: target keywords (first = primary) and the service page the article supports
+POST_SEO = {
+    "white-label-ppc-explained": (["what is white label ppc", "white label ppc for agencies", "white label paid search", "white label ppc partner"], "white-label-ppc"),
+    "what-white-label-ppc-includes": (["white label ppc management included", "white label ppc scope", "white label ppc deliverables", "white label ppc reporting"], "white-label-ppc"),
+    "q4-ad-operations-surge": (["q4 ad operations", "holiday ad surge for agencies", "ad ops overflow support", "agency q4 capacity planning"], "outsourced-ad-operations"),
+    "when-to-outsource-ad-operations": (["when to outsource ad operations", "benefits of outsourcing ad operations", "outsourced ad ops for agencies", "outsourced ad ops for broadcasters"], "outsourced-ad-operations"),
+}
+# articles whose question-shaped H2s (and the answer paragraph under each) also go out as FAQPage schema
+FAQ_POSTS = set(POST_SEO)
 
 CATS = [
     ("seasonal", "Seasonal & timing", ["holiday", "back-to-school", "summer", "q1", "political", "yearly", "calendar", "mid-year", "midyear", "timing", "last-minute", "season"]),
@@ -563,6 +582,9 @@ def inline(t):
     t = _html.escape(unescape_md(t), quote=False)
     t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
     t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", t)
+    # [text](/path) -> link relative to blog/ (site pages get ../, other articles stay bare)
+    t = re.sub(r"\[([^\]]+)\]\((/[^)\s]*)\)",
+               lambda m: f'<a href="{m.group(2)[6:] if m.group(2).startswith("/blog/") else ".." + m.group(2)}">{m.group(1)}</a>', t)
     return t
 
 
@@ -599,13 +621,15 @@ def parse_article(path):
     blocks = [b.strip() for b in re.split(r"\n\s*\n|\n", "\n".join(lines[1:] if has_id else lines)) if b.strip()]
     label, title = unescape_md(blocks[0]), unescape_md(blocks[1])
     body = blocks[2:]
-    out, i, first_para = [], 0, None
+    out, i, first_para, faq = [], 0, None, []
     words = 0
     while i < len(body):
         b = body[i]
         words += len(b.split())
         if is_heading(b):
             out.append(f"<h2>{inline(b)}</h2>")
+            if unescape_md(b).strip().endswith("?") and i + 1 < len(body) and not is_heading(body[i + 1]):
+                faq.append((unescape_md(b).strip(), re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", unescape_md(body[i + 1])).replace("*", "")))
             i += 1
             continue
         out.append(f"<p>{inline(b)}</p>")
@@ -624,11 +648,11 @@ def parse_article(path):
         i += 1
     slug = slugify(label)
     cid, cname = categorize(slug, title)
-    desc = re.sub(r"\s+", " ", (first_para or title).replace("*", ""))
+    desc = POST_DESC.get(slug) or re.sub(r"\s+", " ", (first_para or title).replace("*", ""))
     if len(desc) > 158:
         desc = desc[:155].rsplit(" ", 1)[0].rstrip(",;:—-– ") + "…"
     return {"slug": slug, "label": label, "title": title, "html": "\n".join(out), "desc": desc,
-            "cat": cid, "cat_name": cname, "mins": max(3, math.ceil(words / 230)), "id": fid, "words": words}
+            "cat": cid, "cat_name": cname, "mins": max(3, math.ceil(words / 230)), "id": fid, "words": words, "faq": faq}
 
 
 posts = [parse_article(f) for f in sorted(ART_DIR.glob("*.txt"))]
@@ -714,16 +738,21 @@ for pst in posts:
     post_img = f"{BASE}/assets/img/blog/{pst['slug']}.png" if _img_file.exists() else f"{BASE}/assets/img/og-image.png"
     graph = [ORG,
              {"@type": "BlogPosting", "@id": f"{url}#article", "headline": pst["title"], "description": pst["desc"], "url": url,
-              "mainEntityOfPage": url, "datePublished": PUBLISHED, "dateModified": PUBLISHED,
+              "mainEntityOfPage": url, "datePublished": POST_DATES.get(pst["slug"], PUBLISHED), "dateModified": POST_DATES.get(pst["slug"], PUBLISHED),
               "author": {"@id": f"{BASE}/#org"}, "publisher": {"@id": f"{BASE}/#org"},
               "image": {"@type": "ImageObject", "url": post_img, "width": 1200, "height": 630}, "articleSection": pst["cat_name"], "inLanguage": "en-US",
               "wordCount": pst["words"], "timeRequired": f"PT{pst['mins']}M", "isPartOf": {"@id": f"{BASE}/blog/#blog"},
-              "keywords": pst["cat_name"]}, WEBSITE,
+              "keywords": ", ".join(POST_SEO[pst["slug"]][0]) if pst["slug"] in POST_SEO else pst["cat_name"]}, WEBSITE,
              {"@type": "BreadcrumbList", "itemListElement": [
                  {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"},
                  {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{BASE}/blog/"},
                  {"@type": "ListItem", "position": 3, "name": pst["title"], "item": url}]}]
-    extra = (f'<meta property="article:published_time" content="{PUBLISHED}">\n'
+    if pst["slug"] in POST_SEO:
+        graph[1]["about"] = {"@id": f"{BASE}/{POST_SEO[pst['slug']][1]}#service"}
+        graph[1]["audience"] = {"@type": "BusinessAudience", "name": "Marketing agencies and media companies"}
+    if pst["slug"] in FAQ_POSTS and pst["faq"]:
+        graph.append({"@type": "FAQPage", "@id": f"{url}#faq", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in pst["faq"]]})
+    extra = (f'<meta property="article:published_time" content="{POST_DATES.get(pst["slug"], PUBLISHED)}">\n'
              f'<meta property="article:section" content="{pst["cat_name"]}">\n')
     full = f"{pst['title']} | Factor42 Media"
     if len(full) <= 65:

@@ -1,0 +1,96 @@
+What White-Label PPC Includes
+
+White-Label PPC Management: What's Included and What Isn't
+
+Most white-label PPC problems start before the first campaign goes live. The agency assumes the partner handles creative testing. The partner assumes the agency writes the ad copy. Nobody wrote down who reviews search terms, and three months later the client asks why their budget is going to irrelevant clicks.
+
+The fix is a clear scope. This checklist covers what [white-label PPC management](/white-label-ppc) should include, which platforms to expect, what should stay with your agency, and the questions that settle scope before you sign anything.
+
+What should white-label PPC management include?
+
+White-label PPC management should include everything needed to take a campaign from brief to live to improving, plus reporting your agency can present as its own. If any of the items below are missing or vague, ask about them before you commit.
+
+Campaign builds: account structure, campaigns, ad groups or asset groups, keywords, ads and extensions, built to your brief.
+Tracking setup: conversion tracking checked before launch, so results can be measured from day one.
+Bidding and budgets: bid strategy selection, budget pacing and adjustments to keep each client on goal and on budget.
+Keyword management: ongoing search term reviews, negative keywords and match type adjustments.
+Audience work: audience layering, remarketing lists, lookalike and custom audiences where the platform supports them.
+Creative testing: ad copy and creative A/B tests, with spec checks before anything goes live.
+Pacing checks: daily monitoring that catches under- or over-delivery before the client notices.
+Optimization reviews: a regular cadence, usually weekly, of changes to bids, budgets, queries and creative.
+Branded reporting: reports and dashboards under your logo, ready for your account manager to present.
+
+Two items get skipped most often: search term reviews and pacing checks. Both are tedious, both are invisible when done well, and both are the first things a client notices when they are not done. Make sure they are in writing.
+
+Which platforms should be covered?
+
+A white-label PPC partner should cover Google Ads at minimum and, ideally, the paid social platforms your clients ask for most. Splitting search and social between two vendors means two briefs, two reporting formats and two teams who can't see each other's work.
+
+Within Google Ads, coverage should include the following (see [white-label Google Ads](/white-label-google-ads) for how Factor42 handles each):
+Search campaigns, including keyword strategy, ad copy and assets.
+Performance Max, with asset groups, audience signals and brand guardrails.
+Shopping, with Merchant Center feeds for retail and ecommerce clients.
+Display, with responsive ads and placement controls.
+YouTube video campaigns.
+
+On the social side, Meta (Facebook and Instagram) is the most common request; [white-label Facebook and Instagram ads](/white-label-facebook-ads) covers that work in detail. TikTok, LinkedIn and Reddit come up often enough that a partner who can run them saves you scrambling when a client asks.
+
+Measurement tools matter too. If your clients use Google Analytics 4 or Campaign Manager 360, the partner should be able to connect campaign results to them, so the numbers in your reports match the numbers your client sees.
+
+What stays with the agency?
+
+The agency keeps the client relationship, the strategy and the commercial terms. A partner who drifts into any of these is no longer working for you, even if they mean well.
+
+Specifically, your agency should own:
+Every client conversation, meeting and email.
+The goals, budget and overall strategy for each account.
+Pricing, contracts and invoicing to the client.
+Final approval on brand messaging, offers and anything public-facing.
+The ad accounts themselves, or the client's ownership of them.
+
+Account ownership deserves its own line in any agreement. The partner should work inside accounts that you or your client own and grant access to. You should be able to see who has access and remove it at any time. If the partnership ends, the accounts, history and data stay with you.
+
+Some things sit in between, and you should decide them explicitly. Who writes the first draft of ad copy? Who supplies images and video? Who approves a change in bid strategy? There is no single right answer, but there must be an agreed one.
+
+How should reporting work?
+
+Reporting should run on two tracks: operational visibility for your team and polished reports for your clients. Mixing them is a common mistake.
+
+For your team, you want frequent, plain information: daily pacing, notable changes and anything that needs a decision. This lets your account managers answer a client's question on the spot instead of waiting on the partner.
+
+For your clients, you want a regular branded report that tells the story in your agency's voice. The partner should produce it in your format, with your logo, so your account manager can review it and send it under your name. End-of-campaign wrap reports should work the same way.
+
+Agree on three things up front: the reporting cadence, the format, and who sends what. If the answer to "who sends it to the client" is ever the partner, that is a white-label problem waiting to happen.
+
+What does a scope gap look like in practice?
+
+A scope gap looks like work that both sides assumed the other was doing, and it usually surfaces as a client complaint rather than an internal alert. The pattern is predictable enough that you can check for it in advance.
+
+Take search term reviews. The partner builds the campaign and optimizes bids, but nobody agreed who reviews the search terms report. For a few weeks, nothing looks wrong. Then the client sees spend on clicks that have nothing to do with their business and asks your account manager why. Your team doesn't have an answer, because your team assumed the partner was on it.
+
+The same thing happens with landing page problems, broken conversion tracking and expiring promotions. Each one is small. Each one belongs to someone. The scope document is where you decide who, so that when something breaks, the fix starts immediately instead of with a conversation about whose job it was.
+
+A useful exercise: list the last five things that went wrong on any PPC account you have run, and check whether your proposed scope assigns each one to a named side.
+
+What questions settle scope before you sign?
+
+The questions that settle scope are the ones that force specific answers about work, speed, access and boundaries. In your next partner conversation, ask:
+Which campaign types and platforms are included, and which cost extra.
+How often they review search terms and add negative keywords.
+Their average time from a complete brief to a live campaign.
+Who writes ad copy and who supplies creative.
+How often optimization reviews happen, and how you will see what changed.
+What reporting you get, and whether every client-facing piece carries your brand.
+Who owns the ad accounts, and how you remove their access if you part ways.
+Whether they ever contact your clients directly.
+How they handle a surge, such as several new clients in the same month.
+
+Good partners answer these quickly and specifically. For reference, Factor42 launches Google Ads campaigns in under four hours on average once the brief and creative are in, works inside accounts you own, and never contacts your clients unless you ask.
+
+Vague answers are a signal too. If a partner can't tell you how often they review search terms, they probably don't have a fixed cadence.
+
+The short version
+
+White-label PPC works when both sides know exactly who does what. Write down the deliverables, the platforms, the reporting and the boundaries before the first brief, and most of the friction never shows up.
+
+If you are weighing whether white-label PPC fits your agency, start with [how white-label PPC works for agencies](/blog/white-label-ppc-explained). When you are ready to compare scopes, [book a free consultation](/contact) and we will walk through ours line by line.

@@ -1,0 +1,81 @@
+When to Outsource Ad Operations
+
+When to Outsource Ad Operations (and What It Should Cover)
+
+Most agencies and station groups don't decide to outsource ad operations in a planning meeting. They decide after a bad week: a campaign that launched late, a creative version that went live with the wrong tracking, an invoice that didn't match what actually ran. Knowing when to outsource ad operations before that week arrives saves the client conversation that follows it.
+
+This guide explains what outsourced ad ops covers, the signs it is time for an agency or a station group to outsource, and how to keep full control of your accounts and data when you do.
+
+What is outsourced ad operations?
+
+Outsourced ad operations means a specialist team handles the work between a signed order and a delivering campaign, while your own staff focus on selling and client strategy. That work includes trafficking, creative QA, tracking, pacing, optimization, billing reconciliation and reporting. For a fuller look at the service itself, see Factor42's [outsourced ad operations](/outsourced-ad-operations) page.
+
+The key word is operations. Outsourcing ad ops does not mean handing over your clients, your strategy or your pricing. It means moving the repeatable, deadline-driven production work to a team built to do it at volume, inside your platforms and under your brand.
+
+What tasks does outsourced ad ops cover?
+
+Outsourced ad ops covers every operational step of a campaign's life, from setup to wrap report. A complete scope looks like this:
+Trafficking: setting campaigns up in ad servers, DSPs and social platforms, with targeting, flights and tracking applied.
+Creative QA: checking specs, versions and tracking on every unit before it goes live.
+Pacing: daily monitoring and alerts so campaigns deliver evenly and on budget.
+Optimization: bid adjustments, audience refinement and creative rotation against each campaign's goals.
+Billing reconciliation: matching delivery and spend to what was sold, so invoices hold up.
+Reporting: dashboards and end-of-campaign wrap reports in your brand.
+
+Platform coverage matters as much as task coverage. A partner that runs search, paid social, programmatic, streaming TV and digital out-of-home can take a whole order rather than one line of it. Factor42 works across 12+ DSPs plus the major social platforms and ad servers.
+
+When should an agency outsource ad operations?
+
+Outsourcing ad ops makes sense for an agency when campaign volume is growing faster than the team that executes it, or when clients ask for channels nobody on staff can run well. Common signs include:
+Account managers spend more time in ad platforms than with clients.
+Launch dates slip during busy months, especially in Q4.
+Clients ask for programmatic, streaming TV or new social platforms, and the answer is still no.
+One or two people hold all the operational know-how, and their time off is a risk.
+Reconciliation and wrap reports pile up at the end of every month.
+
+If several of these sound familiar, the issue is capacity, not effort. That is where the benefits of outsourcing ad operations show up first: faster launches, fewer errors and account managers back in front of clients. Hiring can fix it, but slowly, and only for the channels the new hire knows. An outsourced team adds capacity across channels at once and flexes with the season. If the pressure is seasonal, our guide to [covering the Q4 ad surge](/blog/q4-ad-operations-surge) walks through planning overflow before it hits.
+
+For agencies whose main gap is paid search and paid social, [white-label PPC](/blog/white-label-ppc-explained) is the narrower version of the same idea.
+
+When should a station group outsource ad operations?
+
+Outsourced ad ops for broadcasters makes sense when a TV or radio station group has sellers closing digital orders that the stations don't have the staff to fulfill consistently in every market. Broadcast groups sell digital alongside airtime, often across many markets, and the fulfillment side rarely grows as fast as the sales side.
+
+The signs look slightly different from an agency's:
+Each market fulfills digital orders its own way, so quality varies by station.
+Sellers hesitate to pitch newer products like streaming TV because they are unsure they can be delivered.
+Digital campaigns launch later than the matching broadcast flight.
+Reporting to advertisers is inconsistent from market to market.
+
+A shared outsourced ad ops team gives every market the same process, the same speed and the same reporting standard. Stations keep the advertiser relationship and the sale. See how this works for [broadcast and media groups](/broadcasters).
+
+How do you keep control of accounts and data?
+
+You keep control by making sure the partner works inside accounts you own and grants you full visibility, rather than running campaigns from accounts they own. This is the most important term to settle before you outsource anything.
+
+In practice, look for these commitments:
+The ad accounts belong to you or your client, and the partner is granted access to them.
+You can see who has access at any time and remove it yourself.
+Campaign history, audiences and data stay in your accounts if the relationship ends.
+The partner never contacts your clients or advertisers unless you ask.
+Every client-facing report carries your brand, not the partner's.
+
+It is also worth asking how the partner handles data security and what service levels they commit to. Factor42 publishes both: see our [security](/security) and [service level](/sla) pages.
+
+What should you measure once you outsource?
+
+Measure the things that were breaking before you outsourced: launch speed, delivery and error rates. If those improve while your team gets time back, the arrangement is working.
+
+Useful benchmarks to ask any partner for, and to track yourself:
+Average time from a complete brief to a trafficked campaign. Factor42 averages 12 minutes.
+Campaign delivery rate. Factor42's is 98.6% across its partners.
+How much manual overhead the partner's process removes. Factor42's automated pacing alerts, reconciliation and wrap reports cut it by 70%.
+How often errors reach the client, which should trend toward never.
+
+Track these for a full quarter before judging. The first month includes onboarding, and the real picture shows up once the handoff is routine.
+
+The bottom line
+
+Outsource ad operations when execution, not selling, is what limits your growth. Keep the strategy, the client and the accounts; move the repeatable production work to a team built for it.
+
+If you want to see what that would look like for your agency or station group, [book a free consultation](/contact). We will walk through your order flow and show where the handoff would sit.
