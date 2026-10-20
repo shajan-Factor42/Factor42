@@ -12,7 +12,7 @@ BASE = "https://factor42media.com"
 WEB3FORMS_KEY = "afa90fc4-141b-45da-a8cb-7c4adcd1951d"
 # Set to the Cloudflare Worker URL (see _worker/README.md) to send the form through Resend instead of Web3Forms
 FORM_ENDPOINT = ""
-LINKEDIN = "https://www.linkedin.com/company/factor42media/"
+LINKEDIN = "https://www.linkedin.com/company/factor42-media/"
 INSTAGRAM = "https://www.instagram.com/factor42media/"
 FACEBOOK = "https://www.facebook.com/Factor42AdOps/"
 YOUTUBE = "https://www.youtube.com/@Factor42Media"
