@@ -537,7 +537,7 @@ print("built:", sorted(p.name for p in OUT.glob("*.html")))
 
 
 # ================================================================ blog
-import re, html as _html, math
+import re, html as _html, math, datetime
 
 ART_DIR = pathlib.Path(__file__).parent / "articles"
 PUBLISHED = "2026-09-28"
@@ -664,7 +664,10 @@ for pst in posts:
         pst["slug"] = f"{base}-{seen[base]}"
     else:
         seen[base] = 1
-posts.sort(key=lambda x: x["title"].lower())
+# newest first (per-post dates from POST_DATES, others PUBLISHED), then by title
+# same-day posts: later entries in POST_DATES are newer (keep POST_DATES in publish order)
+_POST_SEQ = {k: i for i, k in enumerate(POST_DATES)}
+posts.sort(key=lambda x: (-int(POST_DATES.get(x["slug"], PUBLISHED).replace("-", "")), -_POST_SEQ.get(x["slug"], -1), x["title"].lower()))
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from linker import link_library
@@ -767,7 +770,7 @@ for pst in posts:
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Blog</a><span aria-hidden="true">/</span><span>{pst["cat_name"]}</span></nav>
 <header class="post-head">
 <h1>{_html.escape(pst["title"])}</h1>
-<p class="post-meta"><span>Factor42 Media</span><span>{pst["mins"]} min read</span></p>
+<p class="post-meta"><span>Factor42 Media</span><time datetime="{POST_DATES.get(pst["slug"], PUBLISHED)}">{datetime.date.fromisoformat(POST_DATES.get(pst["slug"], PUBLISHED)).strftime("%b %-d, %Y")}</time><span>{pst["mins"]} min read</span></p>
 </header>
 <div class="prose">
 {pst["html"]}
