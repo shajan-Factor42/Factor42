@@ -60,6 +60,7 @@
 
 ## Blog: Strategy & budget
 
+- [White-Label vs. Hiring vs. Freelancers: Three Ways to Add a Channel](https://factor42media.com/blog/white-label-vs-hiring-vs-freelancers): White-label vs hiring vs freelancers: three ways for an agency to add a channel, compared on cost structure, speed, coverage and risk, and which fits when.
 - [When to Outsource Ad Operations (and What It Should Cover)](https://factor42media.com/blog/when-to-outsource-ad-operations): When to outsource ad operations: what outsourced ad ops covers, the signs for agencies and station groups, and how to keep control of your accounts.
 - [White-Label PPC Management: What's Included and What Isn't](https://factor42media.com/blog/what-white-label-ppc-includes): What's included in white-label PPC management: builds, bidding, keywords, audiences, testing and reporting, what stays with your agency, and what to ask.
 - [A Simple Guide to A/B Testing Your Ads](https://factor42media.com/blog/a-simple-guide-to-a-b-testing): Some of the biggest improvements in marketing come not from big creative leaps but from small, tested tweaks — trying two versions of something, seeing…
@@ -94,6 +95,7 @@
 
 ## Blog: Choosing a partner
 
+- [How White-Label Pricing Works: Wholesale Rates, Retail Rates and Your Margin](https://factor42media.com/blog/how-white-label-pricing-works): How white-label pricing works: wholesale rates, retail rates and your margin, how to set a retail price, margin vs markup, ad spend, and what a rate card…
 - [White-Label PPC: How Agencies Add Paid Search Without Hiring](https://factor42media.com/blog/white-label-ppc-explained): What is white-label PPC? How agencies sell Google Ads and paid social under their own brand while a partner does the work, and how to choose one.
 - [Calculate Your Vendor Sprawl: A Simple Marketing Consolidation Checklist](https://factor42media.com/blog/calculate-your-vendor-sprawl): "Vendor sprawl" is the quiet accumulation of marketing providers, tools, and subscriptions that creeps up on a business over time — one reasonable…
 - [Every Channel, One Place: What "Consolidated Media" Really Means for Your Business](https://factor42media.com/blog/every-channel-one-place): "Consolidated media" sounds like the kind of phrase an agency invents to make something ordinary seem impressive. So let's strip the jargon and say…

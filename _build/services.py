@@ -61,7 +61,7 @@ SERVICES = [
             ("Who is it for?",
              "Marketing agencies that want to add channels without adding headcount, and TV and radio broadcast groups whose sellers want a full digital menu. See the pages for agencies and for broadcasters."),
         ],
-        "blog": ["reddit-tiktok-and-dooh", "why-your-channels-should-talk", "beyond-the-click"],
+        "blog": ["how-white-label-pricing-works", "white-label-vs-hiring-vs-freelancers", "white-label-ppc-explained"],
         "service_type": "White-label digital marketing",
     },
     {

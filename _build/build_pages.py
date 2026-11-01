@@ -543,13 +543,16 @@ ART_DIR = pathlib.Path(__file__).parent / "articles"
 PUBLISHED = "2026-09-28"
 # per-article publish dates (articles not listed use PUBLISHED)
 POST_DATES = {"white-label-ppc-explained": "2026-10-20", "what-white-label-ppc-includes": "2026-10-20",
-              "q4-ad-operations-surge": "2026-10-20", "when-to-outsource-ad-operations": "2026-10-20"}
+              "q4-ad-operations-surge": "2026-10-20", "when-to-outsource-ad-operations": "2026-10-20",
+              "how-white-label-pricing-works": "2026-11-01", "white-label-vs-hiring-vs-freelancers": "2026-11-01"}
 # hand-written meta descriptions (otherwise the first paragraph is used)
 POST_DESC = {
     "white-label-ppc-explained": "What is white-label PPC? How agencies sell Google Ads and paid social under their own brand while a partner does the work, and how to choose one.",
     "what-white-label-ppc-includes": "What's included in white-label PPC management: builds, bidding, keywords, audiences, testing and reporting, what stays with your agency, and what to ask.",
     "q4-ad-operations-surge": "Q4 ad operations without the burnout: why the holiday surge overloads agency ad ops, which tasks spike first, and how to plan overflow coverage early.",
     "when-to-outsource-ad-operations": "When to outsource ad operations: what outsourced ad ops covers, the signs for agencies and station groups, and how to keep control of your accounts.",
+    "how-white-label-pricing-works": "How white-label pricing works: wholesale rates, retail rates and your margin, how to set a retail price, margin vs markup, ad spend, and what a rate card should show.",
+    "white-label-vs-hiring-vs-freelancers": "White-label vs hiring vs freelancers: three ways for an agency to add a channel, compared on cost structure, speed, coverage and risk, and which fits when.",
 }
 # per-article SEO: target keywords (first = primary) and the service page the article supports
 POST_SEO = {
@@ -557,6 +560,8 @@ POST_SEO = {
     "what-white-label-ppc-includes": (["white label ppc management included", "white label ppc scope", "white label ppc deliverables", "white label ppc reporting"], "white-label-ppc"),
     "q4-ad-operations-surge": (["q4 ad operations", "holiday ad surge for agencies", "ad ops overflow support", "agency q4 capacity planning"], "outsourced-ad-operations"),
     "when-to-outsource-ad-operations": (["when to outsource ad operations", "benefits of outsourcing ad operations", "outsourced ad ops for agencies", "outsourced ad ops for broadcasters"], "outsourced-ad-operations"),
+    "how-white-label-pricing-works": (["how white label pricing works", "white label pricing", "wholesale fulfillment rate", "white label margin", "white label rate card"], "white-label-digital-marketing"),
+    "white-label-vs-hiring-vs-freelancers": (["white label vs hiring", "white label vs freelancers", "how to add a channel to your agency", "outsourcing vs hiring for agencies"], "white-label-digital-marketing"),
 }
 # articles whose question-shaped H2s (and the answer paragraph under each) also go out as FAQPage schema
 FAQ_POSTS = set(POST_SEO)

@@ -1708,6 +1708,102 @@ Factor42 Media helps small and mid-sized businesses run streaming TV alongside e
 
 ---
 
+# White-Label vs. Hiring vs. Freelancers: Three Ways to Add a Channel
+URL: https://factor42media.com/blog/white-label-vs-hiring-vs-freelancers
+Topic: Strategy & budget
+
+A client asks for streaming TV. Another wants TikTok. A third has heard about programmatic and wants to know why you are not running it. Every agency reaches the point where clients ask for channels the team does not cover yet, and the question becomes how to add them.
+
+There are three realistic ways to add a channel to your agency: hire someone, bring in freelancers, or use a white-label partner. Each one fits a different situation. This guide compares them fairly on cost structure, speed, coverage and risk, so you can choose the right one for each channel rather than one answer for everything.
+
+
+## What does hiring really involve?
+
+Hiring means adding a specialist to your payroll who works only for your agency, and it is the best option when a channel is core to your business and has steady, predictable volume. You get full control, deep knowledge of your clients, and someone who builds your own processes.
+
+The trade-offs are in time and fixed cost. A hire involves:
+
+- Recruiting, which often takes months for experienced paid media people.
+- Salary and benefits whether or not the client work is there.
+- Tools, platform certifications and training.
+- Ramp time before the new hire works at full speed on your accounts.
+- Key-person risk if that one specialist leaves.
+
+The coverage question matters too. One person rarely covers search, paid social, programmatic and streaming TV equally well. Hiring adds one skill set at a time, so it works best for the channel that already makes up a large share of your revenue.
+
+
+## Where do freelancers fit?
+
+Freelancers fit best for short projects, overflow on channels you already run, and specialist work that is needed occasionally rather than every week. They are fast to start, you pay only for the work, and there are skilled specialists available for almost any platform.
+
+The limits show up when the work becomes ongoing:
+
+- Availability varies, and a busy freelancer may not be free during your peak weeks.
+- Each freelancer has their own process, reporting style and level of quality checking.
+- Coverage depends on finding and managing several people for several channels.
+- Account access and confidentiality need to be handled person by person.
+- If a freelancer moves on, the knowledge of your accounts often goes with them.
+- Freelancers work well as a flexible layer on top of an in-house team. They are harder to rely on as the only way a channel gets delivered.
+
+
+## What does white-label change?
+
+A white-label partner changes the model from adding people to adding a service: a specialist team delivers the channel under your brand, and you pay a wholesale rate only for the accounts you sell. Your agency keeps the client relationship, the strategy and the pricing.
+
+What that typically means in practice:
+
+- You can say yes to a new channel without a hiring cycle.
+- One partner can cover several channels, so you are not managing a different vendor for each one.
+- Delivery cost rises and falls with client volume instead of sitting on payroll.
+- The process, quality checks and reporting format stay consistent across accounts.
+- Reports go out under your brand, and the partner does not contact your clients unless you ask.
+
+The trade-off is that you depend on a partner's process and capacity, so the choice of partner matters. Account ownership, scope and reporting should all be settled before you sign. Our guides to what white-label PPC management should include and how white-label pricing works cover those conversations.
+
+
+## How do the three options compare?
+
+The three options differ most on fixed cost, speed to launch and how many channels they cover at once. A simple side-by-side:
+
+- Hiring: highest control and client knowledge; slowest to start; fixed cost; usually one channel per hire.
+- Freelancers: fast to start; pay per project; quality and availability vary; one channel per person.
+- White-label partner: fast to start; cost scales with accounts sold; consistent process; several channels from one team.
+- None of these wins on every line. That is why most agencies end up using more than one.
+
+
+## Which option fits which agency?
+
+The right option depends on how much volume a channel has and how central it is to your agency's identity. A useful rule of thumb:
+
+- If a channel is a large, steady share of revenue and core to what you sell, hire for it.
+- If you need help on a one-off project or a short overflow period, use a freelancer.
+- If clients ask for a channel you do not run today, or volume is uneven, white-label it.
+- If you are adding several channels at once, white-label avoids hiring several people in parallel.
+
+Many agencies run their main channel in-house and white-label the rest. That mix lets the core team stay focused on what they do best while the agency still offers a full menu of white-label digital marketing services across search, social, programmatic, streaming TV and out-of-home.
+
+
+## How do you switch later?
+
+You switch later by making sure every option leaves the accounts, data and history with your agency or your client from day one. If that is true, moving a channel in-house or to another partner is a handover, not a rebuild.
+
+Three habits make switching easy:
+
+- Keep ad accounts in your agency's or your client's name, and grant access rather than handing over ownership.
+- Agree a reporting format your agency controls, so client reports look the same whoever does the work.
+- Document each account's setup and history as you go, not when someone leaves.
+
+A common path is to start a new channel with a white-label partner, learn what clients want, and hire once volume is steady enough to justify a full-time specialist. Done this way, the partner covers the period when hiring would have been a gamble.
+
+
+## The bottom line
+
+Hire for your core channel, use freelancers for short bursts, and white-label the channels clients ask for that you do not want to staff yet. The best choice is per channel, not per agency.
+
+If you are weighing these options for a specific channel, see how Factor42 works with agencies or book a free consultation. We will look at your client mix and show which channels make sense to hand off.
+
+---
+
 # When to Outsource Ad Operations (and What It Should Cover)
 URL: https://factor42media.com/blog/when-to-outsource-ad-operations
 Topic: Strategy & budget
@@ -3618,6 +3714,115 @@ Factor42 Media runs your SEM, social, programmatic, and every other channel from
 Stop running your channels as strangers. Let them talk, and watch your whole marketing get smarter.
 
 Factor42 Media helps small and mid-sized businesses connect their channels by running them all from one consolidated place — shared data, shared strategy, channels that reinforce each other. Get in touch to make your marketing work as one.
+
+---
+
+# How White-Label Pricing Works: Wholesale Rates, Retail Rates and Your Margin
+URL: https://factor42media.com/blog/how-white-label-pricing-works
+Topic: Choosing a partner
+
+Most agencies that look into white-label fulfillment ask the same question first: what does it cost? The honest answer is that the partner's price is only half of it. How white-label pricing works matters more than any single number, because the model decides whether the service makes your agency money or quietly loses it.
+
+This guide explains the wholesale-and-retail model behind white-label digital marketing, how to set a retail price your clients will accept, where your margin actually comes from, and what a partner's rate card should tell you.
+
+
+## How does white-label pricing work?
+
+White-label pricing works on a wholesale and retail model: your partner charges your agency a wholesale rate to do the work, you charge your client a retail rate for the service, and the difference is your margin. The client only ever sees your retail price, because the service is sold under your brand.
+
+There are three numbers in every white-label arrangement:
+
+- The retail rate: what your client pays your agency for the service.
+- The wholesale rate: what your agency pays the fulfillment partner.
+- The ad spend: the media budget that goes to Google, Meta or another platform.
+- The first two are yours to manage. The third belongs to the client's campaign, and the cleanest arrangements keep it separate from both fees. More on that below.
+
+
+## What is a wholesale fulfillment rate?
+
+A wholesale fulfillment rate is the price a white-label partner charges an agency to deliver the work, set below what the agency will charge its own client. It covers the hands-on production: campaign builds, trafficking, quality checks, optimization and branded reporting.
+
+Partners price that rate in a few common ways:
+
+- Flat monthly fee per account or campaign, often tiered by channel.
+- A percentage of the client's ad spend, usually with a monthly minimum.
+- Per campaign or per flight, common for programmatic, streaming TV and out-of-home.
+- Hourly or retainer blocks, more common for strategy or creative than for fulfillment.
+
+Factor42 prices its wholesale rate by channel mix and volume: the more channels and campaigns an agency sends, the more the rate reflects that scale. The structure matters as much as the level. A flat fee is predictable for you. A percentage of spend scales with the account, which is fair on large budgets and expensive on small ones. Ask which model a partner uses for each channel before you compare numbers.
+
+
+## How should an agency set its retail price?
+
+An agency should set its retail price from the value to the client and the local market, then check it against the wholesale rate, not the other way around. Starting from the wholesale rate and adding a fixed markup is the most common way agencies underprice.
+
+A practical order of work:
+
+- Find what clients in your market already pay for the service, from your own proposals and competitors' published packages.
+- Decide what your agency adds on top of fulfillment: strategy, account management, reporting reviews, the client relationship.
+- Set a retail price that reflects that full service.
+- Confirm the gap to the wholesale rate covers your account management time and leaves profit.
+
+If the gap is too thin after that check, the answer is usually to change the package, not to cut the retail price. Bundling channels, setting a minimum ad spend per client, or moving small accounts to a simpler tier all protect margin better than discounting.
+
+
+## Where does the margin come from?
+
+The margin comes from the difference between your retail rate and the wholesale rate, minus the time your own team spends on the account. That last part is the one agencies forget, and it is where most white-label services lose money.
+
+A simple example, with made-up numbers to show the math rather than anyone's real rates: an agency charges a client 2,000 dollars a month to manage paid search. The fulfillment partner's wholesale rate for that account is 1,000 dollars. The gross difference is 1,000 dollars. If the agency's account manager spends six hours a month on calls, reviews and reporting for that client, and those hours cost the agency 50 dollars each, the real margin is 700 dollars, or 35% of the retail price.
+
+The same math explains why white-label fulfillment is attractive in the first place. Doing that work in-house means paying a specialist's salary, tools and training whether or not the accounts exist. With a wholesale rate, the cost of delivery only appears when there is a client paying for it.
+
+
+## What is the difference between margin and markup?
+
+Margin is profit as a share of the retail price, while markup is profit as a share of the wholesale cost. They describe the same dollars differently, and mixing them up leads to underpricing.
+
+In the example above, the 1,000 dollar gross difference is a 50% margin on the 2,000 dollar retail price, but a 100% markup on the 1,000 dollar wholesale rate. An agency that aims for "50% markup" thinking it means "50% margin" would charge 1,500 dollars instead of 2,000, and keep less than a third as much profit after its own time (200 dollars instead of 700). Pick one measure, use it in every pricing conversation, and write it down.
+
+
+## How should ad spend be handled?
+
+Ad spend should be kept separate from both the retail and wholesale fees, ideally paid directly from the client's card or billing on an account the client or your agency owns. That keeps your fee transparent and keeps the client's media budget from being mistaken for your revenue.
+
+Separating spend has three practical benefits:
+
+- Clients can see exactly what reached the platform, which builds trust at renewal time.
+- Your margin stays tied to the service, not to how much the client spends that month.
+- If you ever change partners, the ad accounts and their history stay where they are.
+
+Some agencies add a percentage on top of ad spend as part of their own retail pricing. That is a legitimate choice, but it should be stated in the client agreement rather than buried in a media invoice.
+
+
+## What should be in a rate card?
+
+A white-label rate card should show the wholesale price for each channel, what is included at that price, and what costs extra, so you can build your own client packages without guessing. A rate card that only lists a number per channel is not enough.
+
+Look for:
+
+- Price per channel or campaign type, and the pricing model behind each one.
+- Minimums: minimum ad spend, minimum term or minimum number of accounts.
+- What is included: builds, optimization cadence, reporting format and schedule.
+- What costs extra: creative production, landing pages, rush launches, extra reports.
+- Volume tiers: how the rate changes as you send more accounts or channels.
+- Terms: notice period, and what happens to accounts and data if you leave.
+
+Factor42 builds its rate card around what each agency sells, so it reflects the channels and volume you actually expect rather than a generic price list. You can book a consultation to get one.
+
+
+## Common white-label pricing mistakes
+
+The most common mistakes are pricing from the wholesale rate up, ignoring your own team's time, mixing ad spend into fees, and competing on price instead of service. Each one is easy to avoid once you see it.
+
+It also helps to agree the scope of work before agreeing a price, so you are comparing like with like. Our guide to what white-label PPC management should include is a useful checklist for that conversation, and how white-label PPC works for agencies covers the handoff between your team and a partner.
+
+
+## The short version
+
+White-label pricing is simple on paper: retail rate minus wholesale rate, minus your own time, equals margin. The agencies that make it work set retail prices from client value, keep ad spend separate, and choose a partner whose rate card is clear enough to package around.
+
+See how the model works in practice on our page for agencies, or book a free consultation and we will build a rate card around the channels you sell.
 
 ---
 
