@@ -545,7 +545,7 @@ PUBLISHED = "2026-09-28"
 POST_DATES = {"white-label-ppc-explained": "2026-10-20", "what-white-label-ppc-includes": "2026-10-20",
               "q4-ad-operations-surge": "2026-10-20", "when-to-outsource-ad-operations": "2026-10-20",
               "how-white-label-pricing-works": "2026-11-01", "white-label-vs-hiring-vs-freelancers": "2026-11-01",
-              "how-stations-refill-q4-after-the-midterms": "2026-11-08"}
+              "how-stations-refill-q4-after-the-midterms": "2026-11-08", "helping-station-sellers-sell-digital": "2026-11-08"}
 # hand-written meta descriptions (otherwise the first paragraph is used)
 POST_DESC = {
     "white-label-ppc-explained": "What is white-label PPC? How agencies sell Google Ads and paid social under their own brand while a partner does the work, and how to choose one.",
@@ -555,6 +555,7 @@ POST_DESC = {
     "how-white-label-pricing-works": "How white-label pricing works: wholesale rates, retail rates and your margin, how to set a retail price, margin vs markup, ad spend, and what a rate card should show.",
     "white-label-vs-hiring-vs-freelancers": "White-label vs hiring vs freelancers: three ways for an agency to add a channel, compared on cost structure, speed, coverage and risk, and which fits when.",
     "how-stations-refill-q4-after-the-midterms": "After Election Day, political spend leaves. How TV and radio stations refill Q4 with digital: what sells, how to package it with airtime, fulfillment and reporting.",
+    "helping-station-sellers-sell-digital": "What station sellers need to sell digital with confidence: a clear digital menu, one order form, reporting by market and product, and quick sales training.",
 }
 # per-article SEO: target keywords (first = primary) and the service page the article supports
 POST_SEO = {
@@ -565,6 +566,7 @@ POST_SEO = {
     "how-white-label-pricing-works": (["how white label pricing works", "white label pricing", "wholesale fulfillment rate", "white label margin", "white label rate card"], "white-label-digital-marketing"),
     "white-label-vs-hiring-vs-freelancers": (["white label vs hiring", "white label vs freelancers", "how to add a channel to your agency", "outsourcing vs hiring for agencies"], "white-label-digital-marketing"),
     "how-stations-refill-q4-after-the-midterms": (["post election advertising for tv stations", "station digital sales after election", "broadcast digital products for local advertisers", "packaging digital with airtime", "station digital reporting by market"], "broadcasters"),
+    "helping-station-sellers-sell-digital": (["how to sell digital advertising at a tv station", "station digital menu", "digital ad order form for stations", "broadcast seller digital training", "digital reporting for station sellers"], "broadcasters"),
 }
 # articles whose question-shaped H2s (and the answer paragraph under each) also go out as FAQPage schema
 FAQ_POSTS = set(POST_SEO)

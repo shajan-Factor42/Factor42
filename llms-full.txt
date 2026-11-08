@@ -1793,6 +1793,100 @@ Factor42 Media helps small and mid-sized businesses run streaming TV alongside e
 
 ---
 
+# What Station Sellers Need to Sell Digital With Confidence
+URL: https://factor42media.com/blog/helping-station-sellers-sell-digital
+Topic: Strategy & budget
+
+Most TV and radio sellers are very good at selling airtime. They know their advertisers, their market and their station's audience. Yet many of the same sellers still hesitate when a conversation turns to digital, even though their advertisers are asking for streaming TV, search and social.
+
+The gap is rarely ability. It is tools. Sellers who have a clear menu, one simple order form, launches that keep pace with the sale and reports they can show at renewal sell digital with the same confidence they bring to airtime. This guide covers each of those tools and how to get a sales team using them quickly. For how Factor42 supports this behind the scenes, see our page for TV and radio groups.
+
+
+## Why do sellers hesitate to sell digital?
+
+Sellers hesitate to sell digital mainly because they are unsure it will be delivered well, not because they doubt the products. A seller's reputation rides on every order, and digital feels riskier when fulfillment, timing and reporting are outside their control.
+
+The most common reasons sellers hold back:
+
+- They are not sure which products to recommend for which advertiser.
+- Each product has its own order process, specs and contact person.
+- They do not know when a campaign will actually go live after the sale.
+- They worry about explaining results they cannot see until the campaign ends.
+- Commission on digital may feel small compared with the effort of a complicated order.
+- Each of these is a process problem. Fix the process and most of the hesitation goes with it.
+
+
+## What should the digital menu include?
+
+A station's digital menu should include the products local advertisers ask for most, described in plain language with a clear use for each one: streaming TV, streaming audio, programmatic display and pre-roll, paid search, paid social, email marketing and digital out-of-home. Sellers should be able to explain every item in one sentence.
+
+A good menu does three things for a seller:
+
+- It shows what each product is for, such as reaching cord-cutters, catching people searching now, or retargeting people who saw the spot.
+- It pairs naturally with airtime, so streaming TV sits next to TV and streaming audio next to radio.
+- It comes in simple packages, so a seller can offer a starter add-on or a fuller plan without building one from scratch.
+
+Keep the menu the same in every market. When every seller works from the same list, managers can compare results, share what works and train new sellers once instead of market by market. Our post on how stations refill Q4 after the midterms shows how these products fit common local advertisers.
+
+
+## How does one order form help?
+
+One order form helps by turning every digital sale, whatever the product mix, into a single submission with the same fields, so sellers do not need to learn a different process for each product or chase anyone for status. It is the single biggest change a station can make to digital sales.
+
+A good order form captures everything fulfillment needs in one place:
+
+- Advertiser, market and the seller's name.
+- Budget for each product and the flight dates.
+- Targeting basics, such as geography and audience.
+- Creative files, landing pages and tracking details.
+- Any notes about the advertiser's goals or brand rules.
+
+When the form is complete, fulfillment can build and launch without a back-and-forth. Sellers spend their time selling instead of reformatting orders, and every order moves through the same tracked stages, so a sales manager can see where any campaign stands. That predictability is what lets sellers promise a start date with confidence.
+
+
+## What reporting do sellers need?
+
+Sellers need reporting that shows budget against spend and delivery for each of their advertisers, broken out by market and product, in a format branded for the station. They need it during the flight to answer questions, and at the end to win the renewal.
+
+The reports that help sellers most:
+
+- Pacing during the flight, so they can tell an advertiser how a campaign is tracking.
+- Budget versus spend by market and product, so every dollar is accounted for.
+- Delivery results for each product, in plain language.
+- Station-branded wrap reports they can send straight to the advertiser.
+- Booked budget for future flights, so sellers and managers can see what is coming.
+
+Reports should be ready without the seller having to ask for them. A seller who walks into a renewal meeting with a clear, branded report has a much easier conversation than one who is still waiting on numbers.
+
+
+## How do you train a sales team quickly?
+
+You train a sales team quickly by teaching the menu, the order form and the reports as one simple workflow, then letting sellers practice on real advertisers right away. Most sellers do not need to become digital specialists; they need to know what to recommend, how to order it and how to read the results.
+
+A short training plan that works:
+
+- One session on the menu: what each product does and which advertisers it suits.
+- One session on the order form, using a real advertiser from each seller's list.
+- One session on reading reports and talking through results with an advertiser.
+- A one-page cheat sheet with the menu, packages and who to contact.
+- A first order submitted together, so the process is familiar before the busy season.
+
+New orders can start running through the new process right away, while campaigns already live finish where they are. That way nothing is disrupted mid-flight, and sellers build confidence on fresh orders first.
+
+
+## Who handles the work behind the menu?
+
+Behind the menu, a station needs a fulfillment team that can build, launch, optimize and report every product in every market. Some groups do this in-house; many use a white-label partner so sellers in every market get the same process under the station's brand. Our guide on when to outsource ad operations covers how to decide.
+
+
+## The bottom line
+
+Station sellers sell digital confidently when the hard parts are taken off their plate: a clear menu, one order form, launches they can count on and reports they can show. Give them those tools, train them in a few short sessions, and digital becomes a natural part of every airtime conversation.
+
+If your group wants to give every seller in every market the same digital menu and workflow, see how it works for broadcast and media groups or talk to our broadcast team.
+
+---
+
 # White-Label vs. Hiring vs. Freelancers: Three Ways to Add a Channel
 URL: https://factor42media.com/blog/white-label-vs-hiring-vs-freelancers
 Topic: Strategy & budget
